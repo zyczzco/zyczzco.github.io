@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/2022/06/12/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <title>VUE详细基础语法</title>
+    <url>/2022/11/20/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1 id="VUE详细基础语法"><a href="#VUE详细基础语法" class="headerlink" title="VUE详细基础语法"></a>VUE详细基础语法</h1><h2 id="一-v-bind动态绑定"><a href="#一-v-bind动态绑定" class="headerlink" title="一.v-bind动态绑定"></a>一.v-bind动态绑定</h2><p>参数</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;a v-bind:href = &quot;url&quot;&gt;.。。。。.&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
@@ -96,6 +96,12 @@
 <p>把父组件的数据动态绑定到子模板的props中</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; v-model=&quot;parentMessage&quot;&gt;</span><br><span class="line">    &lt;my-componet :message=&quot;parentMessage&quot;&gt;&lt;/my-componet&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    Vue.component(&#x27;my-componet&#x27;, &#123;</span><br><span class="line">        props: [&#x27;message&#x27;],</span><br><span class="line">        template: &#x27;&lt;span&gt;&#123; &#123; message &#125; &#125;&lt;/span&gt;&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&#x27;#app&#x27;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            parentMessage:&#x27;&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt; --&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>VUE</category>
+      </categories>
+      <tags>
+        <tag>VUE</tag>
+      </tags>
   </entry>
   <entry>
     <title>vue入门学习</title>

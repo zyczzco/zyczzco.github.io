@@ -37,13 +37,15 @@
     <link href="http://example.com/2021/07/12/spring5%E5%9F%BA%E7%A1%80/"/>
     <id>http://example.com/2021/07/12/spring5%E5%9F%BA%E7%A1%80/</id>
     <published>2021-07-12T11:23:33.000Z</published>
-    <updated>2022-06-12T12:36:05.914Z</updated>
+    <updated>2022-06-12T12:51:33.153Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;spring5基础&quot;&gt;&lt;a href=&quot;#spring5基础&quot; class=&quot;headerlink&quot; title=&quot;spring5基础&quot;&gt;&lt;/a&gt;spring5基础&lt;/h1&gt;&lt;h2 id=&quot;Spring——IOC（控制反转）&quot;&gt;&lt;a href=&quot;#Spring——IOC（控制反转）&quot; class=&quot;headerlink&quot; title=&quot;Spring——IOC（控制反转）&quot;&gt;&lt;/a&gt;Spring——IOC（控制反转）&lt;/h2&gt;&lt;h3 id=&quot;一、IOC容器&quot;&gt;&lt;a href=&quot;#一、IOC容器&quot; class=&quot;headerlink&quot; title=&quot;一、IOC容器&quot;&gt;&lt;/a&gt;一、IOC容器&lt;/h3&gt;&lt;h3 id=&quot;1、什么是IOC（控制反转）&quot;&gt;&lt;a href=&quot;#1、什么是IOC（控制反转）&quot; class=&quot;headerlink&quot; title=&quot;1、什么是IOC（控制反转）&quot;&gt;&lt;/a&gt;1、什么是IOC（控制反转）&lt;/h3&gt;&lt;p&gt; a）把对象创建和对象之间的调用过程，交给Spring进行管理&lt;/p&gt;
 &lt;p&gt; b）使用IOC目的：为了降低耦合度&lt;br&gt;</summary>
     
     
+    
+    <category term="Spring" scheme="http://example.com/categories/Spring/"/>
     
     
     <category term="spring" scheme="http://example.com/tags/spring/"/>
@@ -55,7 +57,7 @@
     <link href="http://example.com/2021/07/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>http://example.com/2021/07/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
     <published>2021-07-12T11:23:33.000Z</published>
-    <updated>2022-06-12T12:35:10.756Z</updated>
+    <updated>2022-06-12T12:51:06.880Z</updated>
     
     
     <summary type="html">&lt;ul&gt;
@@ -65,6 +67,8 @@
 &lt;li&gt;索引</summary>
     
     
+    
+    <category term="数据库" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
     <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -76,12 +80,14 @@
     <link href="http://example.com/2021/07/12/java8learn/"/>
     <id>http://example.com/2021/07/12/java8learn/</id>
     <published>2021-07-12T11:23:33.000Z</published>
-    <updated>2022-06-12T12:35:39.906Z</updated>
+    <updated>2022-06-12T12:51:21.314Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;JAVA8学习&quot;&gt;&lt;a href=&quot;#JAVA8学习&quot; class=&quot;headerlink&quot; title=&quot;JAVA8学习&quot;&gt;&lt;/a&gt;JAVA8学习&lt;/h1&gt;&lt;h2 id=&quot;01、Java8概述&quot;&gt;&lt;a href=&quot;#01、Java8概述&quot; class=&quot;headerlink&quot; title=&quot;01、Java8概述&quot;&gt;&lt;/a&gt;01、Java8概述&lt;/h2&gt;&lt;p&gt;Java 8 (又称为jdk 1.8) 是Java 语言开发的一个主要版本。&lt;br&gt;Java 8 是oracle公司于2014年3月发布，可以看成是自Java 5 以来最具革命性的版本。Java 8为Java语言、编译器、类库、开发工具与JVM带来了大量新特性。&lt;/p&gt;</summary>
     
     
+    
+    <category term="Java" scheme="http://example.com/categories/Java/"/>
     
     
     <category term="JAVA" scheme="http://example.com/tags/JAVA/"/>

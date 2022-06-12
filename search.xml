@@ -349,6 +349,9 @@
 <p>//批量添加测试<br>List&lt;Object[]&gt; batchArgs = new ArrayList&lt;&gt;();<br>Object[] o1 = {“3”,”java”,”a”};<br>Object[] o2 = {“4”,”c++”,”b”};<br>Object[] o3 = {“5”,”MySQL”,”c”};<br>batchArgs.add(o1);<br>batchArgs.add(o2);<br>batchArgs.add(o3);<br>//调用批量添加<br>bookService.batchAdd(batchArgs);</p>
 <h3 id="8、JdbcTemplate-实现批量修改操作"><a href="#8、JdbcTemplate-实现批量修改操作" class="headerlink" title="8、JdbcTemplate 实现批量修改操作"></a>8、JdbcTemplate 实现批量修改操作</h3><p>//批量修改(同批量添加一样，调用同一个方法)<br>@Override<br>public void batchUpdateBook(List&lt;Object[]&gt; batchArgs) {<br> String sql = “update t_book set username=?,ustatus=? where user_id=?”;<br> int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);<br> System.out.println(Arrays.toString(ints));<br>}</p>
 ]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
       <tags>
         <tag>spring</tag>
       </tags>
@@ -833,6 +836,9 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>数据库</tag>
       </tags>
@@ -1973,6 +1979,9 @@ public String toString() &#123;
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
       <tags>
         <tag>JAVA</tag>
       </tags>

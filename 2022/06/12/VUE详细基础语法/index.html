@@ -20,25 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="zyc study blog">
-<meta property="og:type" content="website">
+<meta name="description" content="VUE详细基础语法一.v-bind动态绑定参数 1&lt;a v-bind:href &#x3D; &quot;url&quot;&gt;.。。。。.&lt;&#x2F;a&gt;  动态参数 (1)动态绑定属性classv-bind绑定class中的属性 123456789101112	&lt;head lang&#x3D;&quot;en&quot;&gt;		&lt;meta charset&#x3D;&quot;utf-8&amp;qu">
+<meta property="og:type" content="article">
 <meta property="og:title" content="LAYCHOUblog">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2022/06/12/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name" content="LAYCHOUblog">
-<meta property="og:description" content="zyc study blog">
+<meta property="og:description" content="VUE详细基础语法一.v-bind动态绑定参数 1&lt;a v-bind:href &#x3D; &quot;url&quot;&gt;.。。。。.&lt;&#x2F;a&gt;  动态参数 (1)动态绑定属性classv-bind绑定class中的属性 123456789101112	&lt;head lang&#x3D;&quot;en&quot;&gt;		&lt;meta charset&#x3D;&quot;utf-8&amp;qu">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-12T13:51:21.505Z">
+<meta property="article:modified_time" content="2022-06-12T13:56:09.887Z">
 <meta property="article:author" content="LAYCHOU">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/06/12/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/06/12/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/","path":"2022/06/12/VUE详细基础语法/","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LAYCHOUblog</title>
+<title> | LAYCHOUblog</title>
   
 
 
@@ -68,7 +70,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">LAYCHOUblog</h1>
+      <p class="site-title">LAYCHOUblog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -132,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -145,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">VUE详细基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-v-bind%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text">一.v-bind动态绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E5%B1%9E%E6%80%A7class"><span class="nav-number">1.1.1.</span> <span class="nav-text">(1)动态绑定属性class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-v-bind%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E5%B1%9E%E6%80%A7style"><span class="nav-number">1.1.2.</span> <span class="nav-text">(2)v-bind动态绑定属性style</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E8%BF%87%E6%BB%A4%E5%99%A8filter"><span class="nav-number">1.2.</span> <span class="nav-text">二.过滤器filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">(1)定义过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">*全局过滤器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">*局部过滤器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-Vue%E5%AE%9E%E4%BE%8B%E5%8F%8A%E9%80%89%E9%A1%B9"><span class="nav-number">1.3.</span> <span class="nav-text">三.Vue实例及选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E9%80%89%E9%A1%B9data"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.数据选项data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E9%80%89%E9%A1%B9props"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.属性选项props</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%96%B9%E6%B3%95%E9%80%89%E9%A1%B9methods"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.方法选项methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7computed"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.计算属性computed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-v-model%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.v-model表单控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A0input%E4%BD%BF%E7%94%A8v-model%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">①input使用v-model双向绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A1%E5%A4%9A%E5%A4%8D%E9%80%89%E6%A1%86%E7%BB%91%E5%AE%9A"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">②多复选框绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A2%E5%8D%95%E9%80%89%E6%8C%89%E9%92%AE%E7%9A%84%E7%BB%91%E5%AE%9A"><span class="nav-number">1.3.5.3.</span> <span class="nav-text">③单选按钮的绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A3%E5%88%97%E8%A1%A8%E7%BB%91%E5%AE%9A"><span class="nav-number">1.3.5.4.</span> <span class="nav-text">④列表绑定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Vmodel%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.Vmodel修饰符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.4.</span> <span class="nav-text">四.生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93"><span class="nav-number">1.5.</span> <span class="nav-text">五.模板渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93v-if-v-else-if-v-else"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.条件渲染v-if v-else-if v-else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.列表渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-template%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95"><span class="nav-number">1.5.3.</span> <span class="nav-text">3.template标签用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A"><span class="nav-number">1.6.</span> <span class="nav-text">六.事件绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.直接使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E5%85%A5%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">传入对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-v-on%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">1.6.2.</span> <span class="nav-text">2.v-on修饰符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="nav-number">1.7.</span> <span class="nav-text">七.自定义指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB-%E7%BB%84%E4%BB%B6props"><span class="nav-number">1.8.</span> <span class="nav-text">八.组件props</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.8.1.</span> <span class="nav-text">1.组件的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C"><span class="nav-number">1.8.1.1.</span> <span class="nav-text">(1)全局注册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C"><span class="nav-number">1.8.1.2.</span> <span class="nav-text">(2)局部注册</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -206,123 +209,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/20/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.jpg">
-      <meta itemprop="name" content="LAYCHOU">
-      <meta itemprop="description" content="zyc study blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAYCHOUblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/20/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">vue入门学习</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-11-20 21:18:12" itemprop="dateCreated datePublished" datetime="2022-11-20T21:18:12+08:00">2022-11-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-12 21:22:13" itemprop="dateModified" datetime="2022-06-12T21:22:13+08:00">2022-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/VUE/" itemprop="url" rel="index"><span itemprop="name">VUE</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>21k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>19 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ul>
-<li><input disabled="" type="checkbox"> <h1 id="vue入门学习"><a href="#vue入门学习" class="headerlink" title="vue入门学习"></a>vue入门学习</h1></li>
-</ul>
-<h2 id="1-MVVM-框架"><a href="#1-MVVM-框架" class="headerlink" title="1.MVVM 框架"></a>1.MVVM 框架</h2><ul>
-<li><p>M:model</p>
-<p>数据层（存储数据及对数据的处理如增删改查）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/11/20/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/12/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -335,9 +232,9 @@
       <meta itemprop="name" content="LAYCHOUblog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/12/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -376,7 +273,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="VUE详细基础语法"><a href="#VUE详细基础语法" class="headerlink" title="VUE详细基础语法"></a>VUE详细基础语法</h1><h2 id="一-v-bind动态绑定"><a href="#一-v-bind动态绑定" class="headerlink" title="一.v-bind动态绑定"></a>一.v-bind动态绑定</h2><p>参数</p>
+        <h1 id="VUE详细基础语法"><a href="#VUE详细基础语法" class="headerlink" title="VUE详细基础语法"></a>VUE详细基础语法</h1><h2 id="一-v-bind动态绑定"><a href="#一-v-bind动态绑定" class="headerlink" title="一.v-bind动态绑定"></a>一.v-bind动态绑定</h2><p>参数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-bind:href = &quot;url&quot;&gt;.。。。。.&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
 <p>动态参数</p>
@@ -469,7 +366,6 @@
 <p>把父组件的数据动态绑定到子模板的props中</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; v-model=&quot;parentMessage&quot;&gt;</span><br><span class="line">    &lt;my-componet :message=&quot;parentMessage&quot;&gt;&lt;/my-componet&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    Vue.component(&#x27;my-componet&#x27;, &#123;</span><br><span class="line">        props: [&#x27;message&#x27;],</span><br><span class="line">        template: &#x27;&lt;span&gt;&#123; &#123; message &#125; &#125;&lt;/span&gt;&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&#x27;#app&#x27;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            parentMessage:&#x27;&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt; --&gt;</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
@@ -477,426 +373,42 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
 </div>
 
 
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/12/spring5%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.jpg">
-      <meta itemprop="name" content="LAYCHOU">
-      <meta itemprop="description" content="zyc study blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAYCHOUblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/12/spring5%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Spring5基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-07-12 09:21:04" itemprop="dateCreated datePublished" datetime="2021-07-12T09:21:04+08:00">2021-07-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-12 21:09:31" itemprop="dateModified" datetime="2022-06-12T21:09:31+08:00">2022-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>20k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>18 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="spring5基础"><a href="#spring5基础" class="headerlink" title="spring5基础"></a>spring5基础</h1><h2 id="Spring——IOC（控制反转）"><a href="#Spring——IOC（控制反转）" class="headerlink" title="Spring——IOC（控制反转）"></a>Spring——IOC（控制反转）</h2><h3 id="一、IOC容器"><a href="#一、IOC容器" class="headerlink" title="一、IOC容器"></a>一、IOC容器</h3><h3 id="1、什么是IOC（控制反转）"><a href="#1、什么是IOC（控制反转）" class="headerlink" title="1、什么是IOC（控制反转）"></a>1、什么是IOC（控制反转）</h3><p> a）把对象创建和对象之间的调用过程，交给Spring进行管理</p>
-<p> b）使用IOC目的：为了降低耦合度<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/12/spring5%E5%9F%BA%E7%A1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.jpg">
-      <meta itemprop="name" content="LAYCHOU">
-      <meta itemprop="description" content="zyc study blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAYCHOUblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/" class="post-title-link" itemprop="url">数据库知识点</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-06-12 11:20:20" itemprop="dateCreated datePublished" datetime="2021-06-12T11:20:20+08:00">2021-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-12 21:10:09" itemprop="dateModified" datetime="2022-06-12T21:10:09+08:00">2022-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>17k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>15 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ul>
-<li>事务的四大特性？</li>
-<li>数据库的三大范式</li>
-<li>事务隔离级别有哪些？</li>
-<li>索引
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/12/spring5%E5%9F%BA%E7%A1%80/" rel="prev" title="Spring5基础">
+                  <i class="fa fa-chevron-left"></i> Spring5基础
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/12/Mybatis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.jpg">
-      <meta itemprop="name" content="LAYCHOU">
-      <meta itemprop="description" content="zyc study blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAYCHOUblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/12/Mybatis/" class="post-title-link" itemprop="url">MyBatis框架</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-06-12 10:13:32" itemprop="dateCreated datePublished" datetime="2021-06-12T10:13:32+08:00">2021-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-12 21:09:43" itemprop="dateModified" datetime="2022-06-12T21:09:43+08:00">2022-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>53k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>48 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Mybatis简介"><a href="#Mybatis简介" class="headerlink" title="Mybatis简介"></a>Mybatis简介</h1><h2 id="MyBatis历史"><a href="#MyBatis历史" class="headerlink" title="MyBatis历史"></a>MyBatis历史</h2><ul>
-<li>   MyBatis最初是Apache的一个开源项目iBatis, 2010年6月这个项目由Apache Software Foundation迁移到了Google Code。随着开发团队转投Google Code旗下，iBatis3.x正式更名为MyBatis。代码于2013年11月迁移到Github</li>
-<li>   iBatis一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBatis提供的持久层框架包括SQL Maps和Data Access Objects（DAO）
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/12/Mybatis/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+            <div class="post-nav-item">
+                <a href="/2022/11/20/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" rel="next" title="vue入门学习">
+                  vue入门学习 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/12/java8learn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.jpg">
-      <meta itemprop="name" content="LAYCHOU">
-      <meta itemprop="description" content="zyc study blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAYCHOUblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/12/java8learn/" class="post-title-link" itemprop="url">Java8概述</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-12 16:10:13" itemprop="dateCreated datePublished" datetime="2021-05-12T16:10:13+08:00">2021-05-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-12 21:09:58" itemprop="dateModified" datetime="2022-06-12T21:09:58+08:00">2022-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>31k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>28 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JAVA8学习"><a href="#JAVA8学习" class="headerlink" title="JAVA8学习"></a>JAVA8学习</h1><h2 id="01、Java8概述"><a href="#01、Java8概述" class="headerlink" title="01、Java8概述"></a>01、Java8概述</h2><p>Java 8 (又称为jdk 1.8) 是Java 语言开发的一个主要版本。<br>Java 8 是oracle公司于2014年3月发布，可以看成是自Java 5 以来最具革命性的版本。Java 8为Java语言、编译器、类库、开发工具与JVM带来了大量新特性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/12/java8learn/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 

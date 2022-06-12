@@ -358,7 +358,7 @@
   </entry>
   <entry>
     <title>数据库知识点</title>
-    <url>/2021/07/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <url>/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
     <content><![CDATA[<ul>
 <li>事务的四大特性？</li>
 <li>数据库的三大范式</li>
@@ -845,7 +845,7 @@
   </entry>
   <entry>
     <title>Java8概述</title>
-    <url>/2021/07/12/java8learn/</url>
+    <url>/2021/05/12/java8learn/</url>
     <content><![CDATA[<h1 id="JAVA8学习"><a href="#JAVA8学习" class="headerlink" title="JAVA8学习"></a>JAVA8学习</h1><h2 id="01、Java8概述"><a href="#01、Java8概述" class="headerlink" title="01、Java8概述"></a>01、Java8概述</h2><p>Java 8 (又称为jdk 1.8) 是Java 语言开发的一个主要版本。<br>Java 8 是oracle公司于2014年3月发布，可以看成是自Java 5 以来最具革命性的版本。Java 8为Java语言、编译器、类库、开发工具与JVM带来了大量新特性。</p>
 <span id="more"></span>
 <h2 id="02、Java8新特性的好处"><a href="#02、Java8新特性的好处" class="headerlink" title="02、Java8新特性的好处"></a>02、Java8新特性的好处</h2><p>速度更快<br>代码更少(增加了新的语法：Lambda 表达式)<br>强大的Stream API<br>便于并行<br>最大化减少空指针异常：Optional<br>Nashorn引擎，允许在JVM上运行JS应用</p>

@@ -3,7 +3,8 @@
   <entry>
     <title>VUE详细基础语法</title>
     <url>/2022/11/20/VUE%E8%AF%A6%E7%BB%86%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="VUE详细基础语法"><a href="#VUE详细基础语法" class="headerlink" title="VUE详细基础语法"></a>VUE详细基础语法</h1><h2 id="一-v-bind动态绑定"><a href="#一-v-bind动态绑定" class="headerlink" title="一.v-bind动态绑定"></a>一.v-bind动态绑定</h2><p>参数</p>
+    <content><![CDATA[<h1 id="VUE详细基础语法"><a href="#VUE详细基础语法" class="headerlink" title="VUE详细基础语法"></a>VUE详细基础语法</h1><span id="more"></span>
+<h2 id="一-v-bind动态绑定"><a href="#一-v-bind动态绑定" class="headerlink" title="一.v-bind动态绑定"></a>一.v-bind动态绑定</h2><p>参数</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;a v-bind:href = &quot;url&quot;&gt;.。。。。.&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
 <p>动态参数</p>

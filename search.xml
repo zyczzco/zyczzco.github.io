@@ -7,6 +7,11 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Post5</title>
+    <url>/2022/06/12/Post5/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title></title>
     <url>/2022/06/12/spring5%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="spring5基础"><a href="#spring5基础" class="headerlink" title="spring5基础"></a>spring5基础</h1><h2 id="Spring——IOC（控制反转）"><a href="#Spring——IOC（控制反转）" class="headerlink" title="Spring——IOC（控制反转）"></a>Spring——IOC（控制反转）</h2><h3 id="一、IOC容器"><a href="#一、IOC容器" class="headerlink" title="一、IOC容器"></a>一、IOC容器</h3><h3 id="1、什么是IOC（控制反转）"><a href="#1、什么是IOC（控制反转）" class="headerlink" title="1、什么是IOC（控制反转）"></a>1、什么是IOC（控制反转）</h3><p> a）把对象创建和对象之间的调用过程，交给Spring进行管理</p>

@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>VUE详情语法</title>
+    <url>/2022/06/12/VUE%E8%AF%A6%E6%83%85%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>VUE</category>
+      </categories>
+      <tags>
+        <tag>VUE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue入门学习</title>
-    <url>/2022/06/12/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</url>
+    <url>/2022/11/20/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<ul>
 <li><input disabled="" type="checkbox"> <h1 id="vue入门学习"><a href="#vue入门学习" class="headerlink" title="vue入门学习"></a>vue入门学习</h1></li>
 </ul>

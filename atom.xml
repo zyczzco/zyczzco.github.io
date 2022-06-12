@@ -41,23 +41,6 @@
   </entry>
   
   <entry>
-    <title>VUE详情语法</title>
-    <link href="http://example.com/2022/06/12/VUE%E8%AF%A6%E6%83%85%E8%AF%AD%E6%B3%95/"/>
-    <id>http://example.com/2022/06/12/VUE%E8%AF%A6%E6%83%85%E8%AF%AD%E6%B3%95/</id>
-    <published>2022-06-12T13:21:14.000Z</published>
-    <updated>2022-06-12T13:23:38.965Z</updated>
-    
-    
-    
-    
-    <category term="VUE" scheme="http://example.com/categories/VUE/"/>
-    
-    
-    <category term="VUE" scheme="http://example.com/tags/VUE/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Spring5基础</title>
     <link href="http://example.com/2021/07/12/spring5%E5%9F%BA%E7%A1%80/"/>
     <id>http://example.com/2021/07/12/spring5%E5%9F%BA%E7%A1%80/</id>

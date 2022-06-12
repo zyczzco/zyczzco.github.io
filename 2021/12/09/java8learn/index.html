@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="JAVA8学习01、Java8概述Java 8 (又称为jdk 1.8) 是Java 语言开发的一个主要版本。Java 8 是oracle公司于2014年3月发布，可以看成是自Java 5 以来最具革命性的版本。Java 8为Java语言、编译器、类库、开发工具与JVM带来了大量新特性。 02、Java8新特性的好处速度更快代码更少(增加了新的语法：Lambda 表达式)强大的Stream API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAYCHOUblog">
+<meta property="og:url" content="http://example.com/2021/12/09/java8learn/index.html">
+<meta property="og:site_name" content="LAYCHOUblog">
+<meta property="og:description" content="JAVA8学习01、Java8概述Java 8 (又称为jdk 1.8) 是Java 语言开发的一个主要版本。Java 8 是oracle公司于2014年3月发布，可以看成是自Java 5 以来最具革命性的版本。Java 8为Java语言、编译器、类库、开发工具与JVM带来了大量新特性。 02、Java8新特性的好处速度更快代码更少(增加了新的语法：Lambda 表达式)强大的Stream API">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-09T03:04:45.700Z">
+<meta property="article:modified_time" content="2021-11-20T08:03:32.161Z">
+<meta property="article:author" content="LAYCHOU">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/12/09/java8learn/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/09/java8learn/","path":"2021/12/09/java8learn/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | LAYCHOUblog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">LAYCHOUblog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JAVA8%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">JAVA8学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#01%E3%80%81Java8%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">01、Java8概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02%E3%80%81Java8%E6%96%B0%E7%89%B9%E6%80%A7%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">1.2.</span> <span class="nav-text">02、Java8新特性的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03%E3%80%81%E5%B9%B6%E8%A1%8C%E6%B5%81%E4%B8%8E%E4%B8%B2%E8%A1%8C%E6%B5%81"><span class="nav-number">1.3.</span> <span class="nav-text">03、并行流与串行流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#04%E3%80%81Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">04、Lambda表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#05%E3%80%81%E5%87%BD%E6%95%B0%E5%BC%8F-Functional-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.5.</span> <span class="nav-text">05、函数式(Functional)接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#06%E3%80%81%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8%E4%B8%8E%E6%9E%84%E9%80%A0%E5%99%A8%E5%BC%95%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">06、方法引用与构造器引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#07%E3%80%81%E5%BC%BA%E5%A4%A7%E7%9A%84Stream-API"><span class="nav-number">2.1.</span> <span class="nav-text">07、强大的Stream API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#08%E3%80%81Optional%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">08、Optional类</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LAYCHOU"
+      src="/images/mypic.jpg">
+  <p class="site-author-name" itemprop="name">LAYCHOU</p>
+  <div class="site-description" itemprop="description">zyc study blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zyczzco" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zyczzco" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/09/java8learn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.jpg">
+      <meta itemprop="name" content="LAYCHOU">
+      <meta itemprop="description" content="zyc study blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LAYCHOUblog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-09 11:04:45" itemprop="dateCreated datePublished" datetime="2021-12-09T11:04:45+08:00">2021-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-20 16:03:32" itemprop="dateModified" datetime="2021-11-20T16:03:32+08:00">2021-11-20</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>31k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>28 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="JAVA8学习"><a href="#JAVA8学习" class="headerlink" title="JAVA8学习"></a>JAVA8学习</h1><h2 id="01、Java8概述"><a href="#01、Java8概述" class="headerlink" title="01、Java8概述"></a>01、Java8概述</h2><p>Java 8 (又称为jdk 1.8) 是Java 语言开发的一个主要版本。<br>Java 8 是oracle公司于2014年3月发布，可以看成是自Java 5 以来最具革命性的版本。Java 8为Java语言、编译器、类库、开发工具与JVM带来了大量新特性。</p>
+<h2 id="02、Java8新特性的好处"><a href="#02、Java8新特性的好处" class="headerlink" title="02、Java8新特性的好处"></a>02、Java8新特性的好处</h2><p>速度更快<br>代码更少(增加了新的语法：Lambda 表达式)<br>强大的Stream API<br>便于并行<br>最大化减少空指针异常：Optional<br>Nashorn引擎，允许在JVM上运行JS应用</p>
+<h2 id="03、并行流与串行流"><a href="#03、并行流与串行流" class="headerlink" title="03、并行流与串行流"></a>03、并行流与串行流</h2><p>并行流就是把一个内容分成多个数据块，并用不同的线程分别处理每个数据块的流。相比较串行的流，并行的流可以很大程度上提高程序的执行效率。</p>
+<p>Java 8 中将并行进行了优化，我们可以很容易的对数据进行并行操作。Stream API 可以声明性地通过parallel() 与sequential() 在并行流与顺序流之间进行切换。</p>
+<h2 id="04、Lambda表达式"><a href="#04、Lambda表达式" class="headerlink" title="04、Lambda表达式"></a>04、Lambda表达式</h2><p>Lambda 是一个匿名函数，我们可以把Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。使用它可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java的语言表达能力得到了提升。</p>
+<p>4.1、Lambda表达式使用举例<br>import org.junit.Test;</p>
+<p>import java.util.Comparator;</p>
+<p>/**</p>
+<ul>
+<li>Lambda表达式的使用举例</li>
+<li>/</li>
+<li>public class LambdaTest {<br>@Test<br>public void test(){<pre><code> Runnable r1 = new Runnable() &#123;
+     @Override
+     public void run() &#123;
+         System.out.println(&quot;长安欢迎您&quot;);
+     &#125;
+ &#125;;
+ r1.run();
+
+ System.out.println(&quot;+++++++++++++++++++++++++|&quot;);
+  
+ Runnable r2 = () -&gt; System.out.println(&quot;长安欢迎您&quot;);
+  
+ r2.run();
+</code></pre>
+ } @Test<br> public void test2(){<pre><code> Comparator&lt;Integer&gt; c1 = new Comparator&lt;Integer&gt;() &#123;
+     @Override
+     public int compare(Integer o1, Integer o2) &#123;
+         return Integer.compare(o1,o2);
+     &#125;
+ &#125;;
+ int compare1 = c1.compare(8,16);
+ System.out.println(compare1);
+
+ System.out.println(&quot;+++++++++++++++++++++++&quot;);
+  
+ //Lambda表达式的写法
+ Comparator&lt;Integer&gt; c2 = (o1,o2) -&gt; Integer.compare(o1,o2);
+  
+ int compare2 = c2.compare(28,35);
+ System.out.println(compare2);
+  
+ System.out.println(&quot;+++++++++++++++++++++++++++&quot;);
+ //方法引用
+ Comparator&lt;Integer&gt; c3 = Integer :: compare;
+  
+ int compare3 = c3.compare(28,35);
+ System.out.println(compare3);
+</code></pre>
+ }<br>   }</li>
+</ul>
+<p> 4.2、Lambda表达式语法的使用1<br> import org.junit.Test;</p>
+<p>import java.util.ArrayList;<br>import java.util.function.Consumer;</p>
+<p>/**</p>
+<ul>
+<li><p>Lambda表达式的使用</p>
+</li>
+<li></li>
+<li><p>1.举例： (o1,o2) -&gt; Integer.compare(o1,o2);</p>
+</li>
+<li><p>2.格式：</p>
+</li>
+<li><pre><code> -&gt; :lambda操作符 或 箭头操作符
+</code></pre>
+</li>
+<li><pre><code> -&gt;左边：lambda形参列表 （其实就是接口中的抽象方法的形参列表）
+</code></pre>
+</li>
+<li><pre><code> -&gt;右边：lambda体 （其实就是重写的抽象方法的方法体）
+</code></pre>
+</li>
+<li></li>
+<li><p>3.Lambda表达式的使用：（分为6种情况介绍）</p>
+</li>
+<li><p>/<br>  public class LambdaTest1 {</p>
+<p>  //语法格式一：无参，无返回值<br>  @Test<br>  public void test(){</p>
+<pre><code>  Runnable r1 = new Runnable() &#123;
+      @Override
+      public void run() &#123;
+          System.out.println(&quot;长安欢迎您&quot;);
+      &#125;
+  &#125;;
+  r1.run();
+
+  System.out.println(&quot;+++++++++++++++++++++++++|&quot;);
+   
+  Runnable r2 = () -&gt; System.out.println(&quot;长安欢迎您&quot;);
+   
+  r2.run();
+</code></pre>
+<p>  }</p>
+<p>  //语法格式二：Lambda 需要一个参数，但是没有返回值。<br>  @Test<br>  public void test2(){</p>
+<pre><code>  Consumer&lt;String&gt; con = new Consumer&lt;String&gt;() &#123;
+      @Override
+      public void accept(String s) &#123;
+          System.out.println(s);
+      &#125;
+  &#125;;
+  con.accept(&quot;善与恶的区别是什么？&quot;);
+
+  System.out.println(&quot;+++++++++++++++++++&quot;);
+   
+  Consumer&lt;String&gt; c1 = (String s) -&gt; &#123;
+      System.out.println(s);
+  &#125;;
+  c1.accept(&quot;先天人性无善恶,后天人性有善恶。&quot;);
+</code></pre>
+<p>  }</p>
+<p>  //语法格式三：数据类型可以省略，因为可由编译器推断得出，称为“类型推断”<br>  @Test<br>  public void test3(){</p>
+<pre><code>  Consumer&lt;String&gt; c1 = (String s) -&gt; &#123;
+      System.out.println(s);
+  &#125;;
+  c1.accept(&quot;先天人性无善恶,后天人性有善恶。&quot;);
+
+  System.out.println(&quot;---------------------&quot;);
+   
+  Consumer&lt;String&gt; c2 = (s) -&gt; &#123;
+      System.out.println(s);
+  &#125;;
+  c2.accept(&quot;如果没有邪恶的话我们怎么会知道人世间的那些善良呢？&quot;);
+</code></pre>
+<p>  }</p>
+<p>  @Test<br>  public void test4(){</p>
+<pre><code>  ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();//类型推断
+
+  int[] arr = &#123;1,2,3&#125;;//类型推断
+</code></pre>
+<p>  }<br>  }</p>
+</li>
+</ul>
+<p> 4.3、Lambda表达式语法的使用2<br> import org.junit.Test;</p>
+<p>import java.util.Comparator;<br>import java.util.function.Consumer;</p>
+<p>/**</p>
+<ul>
+<li><p>Lambda表达式的使用</p>
+</li>
+<li></li>
+<li><p>1.举例： (o1,o2) -&gt; Integer.compare(o1,o2);</p>
+</li>
+<li><p>2.格式：</p>
+</li>
+<li><p>-&gt; :lambda操作符 或 箭头操作符</p>
+</li>
+<li><p>-&gt;左边：lambda形参列表 （其实就是接口中的抽象方法的形参列表）</p>
+</li>
+<li><p>-&gt;右边：lambda体 （其实就是重写的抽象方法的方法体）<br>  *</p>
+</li>
+<li><p>3.Lambda表达式的使用：（分为6种情况介绍）</p>
+</li>
+<li></li>
+<li><p>总结：</p>
+</li>
+<li><p>-&gt;左边：lambda形参列表的参数类型可以省略(类型推断)；如果lambda形参列表只有一个参数，其一对()也可以省略</p>
+</li>
+<li><p>   -&gt;右边：lambda体应该使用一对{}包裹；如果lambda体只有一条执行语句（可能是return语句），省略这一对{}和return关键字</p>
+</li>
+<li><p>/<br>public class LambdaTest1 {</p>
+<p>  //语法格式四：Lambda若只需要一个参数时，参数的小括号可以省略<br>  @Test<br>  public void test5(){</p>
+<pre><code>  Consumer&lt;String&gt; c1 = (s) -&gt; &#123;
+      System.out.println(s);
+  &#125;;
+  c1.accept(&quot;先天人性无善恶,后天人性有善恶。&quot;);
+
+  System.out.println(&quot;---------------------&quot;);
+  
+  Consumer&lt;String&gt; c2 = s -&gt; &#123;
+      System.out.println(s);
+  &#125;;
+  c2.accept(&quot;如果没有邪恶的话我们怎么会知道人世间的那些善良呢？&quot;);
+</code></pre>
+<p>  }</p>
+<p>  //语法格式五：Lambda需要两个或以上的参数，多条执行语句，并且可以有返回值<br>  @Test<br>  public void test6(){</p>
+<pre><code>  Comparator&lt;Integer&gt; c1 = new Comparator&lt;Integer&gt;() &#123;
+      @Override
+      public int compare(Integer o1, Integer o2) &#123;
+          System.out.println(o1);
+          System.out.println(o2);
+          return o1.compareTo(o2);
+      &#125;
+  &#125;;
+  System.out.println(c1.compare(15,23));
+
+  System.out.println(&quot;\\\\\\\\\\\\\\\\\\\\\\\\\\&quot;);
+  
+  Comparator&lt;Integer&gt; com2 = (o1,o2) -&gt; &#123;
+      System.out.println(o1);
+      System.out.println(o2);
+      return o1.compareTo(o2);
+  &#125;;
+  System.out.println(com2.compare(16,8));
+</code></pre>
+<p>  }</p>
+<p>  //语法格式六：当Lambda体只有一条语句时，return与大括号若有，都可以省略<br>  @Test<br>  public void test7(){</p>
+<pre><code>  Comparator&lt;Integer&gt; c1 = (o1,o2) -&gt; &#123;
+      return o1.compareTo(o2);
+  &#125;;
+
+  System.out.println(c1.compare(16,8));
+  
+  System.out.println(&quot;\\\\\\\\\\\\\\\\\\\\\\\\\\&quot;);
+  
+  Comparator&lt;Integer&gt; c2 = (o1,o2) -&gt; o1.compareTo(o2);
+  
+  System.out.println(c2.compare(17,24));
+</code></pre>
+<p>  }</p>
+<p>  @Test<br>  public void test8(){</p>
+<pre><code>  Consumer&lt;String&gt; c1 = s -&gt; &#123;
+      System.out.println(s);
+  &#125;;
+  c1.accept(&quot;先天人性无善恶,后天人性有善恶。&quot;);
+
+  System.out.println(&quot;---------------------&quot;);
+  
+  Consumer&lt;String&gt; c2 = s -&gt; System.out.println(s);
+  
+  c2.accept(&quot;如果没有邪恶的话我们怎么会知道人世间的那些善良呢？&quot;);
+</code></pre>
+<p>  }<br>}</p>
+</li>
+</ul>
+<h2 id="05、函数式-Functional-接口"><a href="#05、函数式-Functional-接口" class="headerlink" title="05、函数式(Functional)接口"></a>05、函数式(Functional)接口</h2><p>5.1、函数式接口的介绍<br>/*</p>
+<ul>
+<li><p>4.Lambda表达式的本质：作为函数式接口的实例</p>
+</li>
+<li></li>
+<li><ol start="5">
+<li>如果一个接口中，只声明了一个抽象方法，则此接口就称为函数式接口。我们可以在一个接口上使用 @FunctionalInterface 注解，</li>
+</ol>
+</li>
+<li><p>  这样做可以检查它是否是一个函数式接口。</p>
+</li>
+<li></li>
+<li><p>/</p>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>自定义函数式接口</p>
+</li>
+<li><p>/<br>  public interface MyInterFace {</p>
+<p>  void method();</p>
+</li>
+</ul>
+<p>//    void method2();</p>
+<p>}</p>
+<p>在java.util.function包下定义了Java 8 的丰富的函数式接口<br>Java从诞生日起就是一直倡导“一切皆对象”，在Java里面面向对象(OOP)编程是一切。但是随着python、scala等语言的兴起和新技术的挑战，Java不得不做出调整以便支持更加广泛的技术要求，也即java不但可以支持OOP还可以支持OOF（面向函数编程）<br>在函数式编程语言当中，函数被当做一等公民对待。在将函数作为一等公民的编程语言中，Lambda表达式的类型是函数。但是在Java8中，有所不同。在Java8中，Lambda表达式是对象，而不是函数，它们必须依附于一类特别的对象类型——函数式接口。<br>简单的说，在Java8中，Lambda表达式就是一个函数式接口的实例。这就是Lambda表达式和函数式接口的关系。也就是说，只要一个对象是函数式接口的实例，那么该对象就可以用Lambda表达式来表示。<br>所以以前用匿名实现类表示的现在都可以用Lambda表达式来写。<br>5.2、Java内置的函数式接口介绍及使用举例<br>函数式接口    参数类型    返回类型    用途<br>Consumer 消费型接口    T    void    对类型为T的对象应用操作，包含方法：void accept(T t)<br>Supplier 供给型接口    无    T    返回类型为T的对象，包含方法：T get()<br>Function&lt;T, R&gt;函数型接口    T    R    对类型为T的对象应用操作，并返回结果。结果是R类型的对象。包含方法：R apply(T t)<br>Predicate断定型接口    T    boolean    确定类型为T的对象是否满足某约束，并返回boolean 值。包含方法：boolean test(T t)<br>BiFunction&lt;T,U,R&gt;    T, U    R    对类型为T,U参数应用操作，返回R类型的结果。包含方法为：Rapply(T t,U u);<br>UnaryOperator(Function子接口)    T    T    对类型为T的对象进行一元运算，并返回T类型的结果。包含方法为：Tapply(T t);<br>BinaryOperator(BiFunction子接口)    T,T    T    对类型为T的对象进行二元运算，并返回T类型的结果。包含方法为：Tapply(T t1,T t2);<br>BiConsumer&lt;T,U&gt;    T,U    void    对类型为T,U参数应用操作。包含方法为：voidaccept(Tt,Uu)<br>BiPredicate&lt;T,U&gt;    T,U    boolean    包含方法为：booleantest(Tt,Uu)<br>ToIntFunction    T    int    计算int值的函数<br>ToLongFunction    T    long    计算long值的函数<br>ToDoubleFunction    T    double    计算double值的函数<br>IntFunction    int    R    参数为int类型的函数<br>LongFunction    long    R    参数为long类型的函数<br>DoubleFunction    double    R    参数为double类型的函数<br>import org.junit.Test;</p>
+<p>import java.util.ArrayList;<br>import java.util.Arrays;<br>import java.util.List;<br>import java.util.function.Consumer;<br>import java.util.function.Predicate;</p>
+<p>/**</p>
+<ul>
+<li><p>java内置的4大核心函数式接口</p>
+</li>
+<li></li>
+<li><p>消费型接口 Consumer<T>     void accept(T t)</p>
+</li>
+<li><p>供给型接口 Supplier<T>     T get()</p>
+</li>
+<li><p>函数型接口 Function&lt;T,R&gt;   R apply(T t)</p>
+</li>
+<li><p>断定型接口 Predicate<T>    boolean test(T t)</p>
+</li>
+<li><p>/<br>  public class LambdaTest2 {</p>
+<p>  public void happyTime(double money, Consumer<Double> con) {</p>
+<pre><code>  con.accept(money);
+</code></pre>
+<p>  }</p>
+<p>  @Test<br>  public void test(){</p>
+<pre><code>  happyTime(30, new Consumer&lt;Double&gt;() &#123;
+      @Override
+      public void accept(Double aDouble) &#123;
+          System.out.println(&quot;熬夜太累了，点个外卖，价格为：&quot; + aDouble);
+      &#125;
+  &#125;);
+  System.out.println(&quot;+++++++++++++++++++++++++&quot;);
+
+  //Lambda表达式写法
+  happyTime(20,money -&gt; System.out.println(&quot;熬夜太累了，吃口麻辣烫，价格为：&quot; + money));
+</code></pre>
+<p>  }</p>
+<p>  //根据给定的规则，过滤集合中的字符串。此规则由Predicate的方法决定<br>  public List<String> filterString(List<String> list, Predicate<String> pre){</p>
+<pre><code>  ArrayList&lt;String&gt; filterList = new ArrayList&lt;&gt;();
+  for(String s : list)&#123;
+      if(pre.test(s))&#123;
+          filterList.add(s);
+      &#125;
+  &#125;
+  return filterList;
+</code></pre>
+<p>  }</p>
+<p>  @Test<br>  public void test2(){</p>
+<pre><code>  List&lt;String&gt; list = Arrays.asList(&quot;长安&quot;,&quot;上京&quot;,&quot;江南&quot;,&quot;渝州&quot;,&quot;凉州&quot;,&quot;兖州&quot;);
+
+  List&lt;String&gt; filterStrs = filterString(list, new Predicate&lt;String&gt;() &#123;
+      @Override
+      public boolean test(String s) &#123;
+          return s.contains(&quot;州&quot;);
+      &#125;
+  &#125;);
+   
+  System.out.println(filterStrs);
+   
+  List&lt;String&gt; filterStrs1 = filterString(list,s -&gt; s.contains(&quot;州&quot;));
+  System.out.println(filterStrs1);
+</code></pre>
+<p>  }<br>  }</p>
+</li>
+</ul>
+<h1 id="06、方法引用与构造器引用"><a href="#06、方法引用与构造器引用" class="headerlink" title="06、方法引用与构造器引用"></a>06、方法引用与构造器引用</h1><p> 当要传递给Lambda体的操作，已经有实现的方法了，可以使用方法引用！<br> 方法引用可以看做是Lambda表达式深层次的表达。换句话说，方法引用就是Lambda表达式，也就是函数式接口的一个实例，通过方法的名字来指向一个方法，可以认为是Lambda表达式的一个语法糖。<br> 要求：实现接口的抽象方法的参数列表和返回值类型，必须与方法引用的方法的参数列表和返回值类型保持一致！<br> 格式：使用操作符“::” 将类(或对象) 与方法名分隔开来。<br> 如下三种主要使用情况：<br> 对象::实例方法名<br> 类::静态方法名<br> 类::实例方法名<br> 6.1、方法引用的使用情况1<br> 1、Employee类</p>
+<p>public class Employee {</p>
+<pre><code>private int id;
+private String name;
+private int age;
+private double salary;
+
+public int getId() &#123;
+    return id;
+&#125;
+
+public void setId(int id) &#123;
+    this.id = id;
+&#125;
+
+public String getName() &#123;
+    return name;
+&#125;
+
+public void setName(String name) &#123;
+    this.name = name;
+&#125;
+
+public int getAge() &#123;
+    return age;
+&#125;
+
+public void setAge(int age) &#123;
+    this.age = age;
+&#125;
+
+public double getSalary() &#123;
+    return salary;
+&#125;
+
+public void setSalary(double salary) &#123;
+    this.salary = salary;
+&#125;
+
+public Employee() &#123;
+    System.out.println(&quot;Employee().....&quot;);
+&#125;
+
+public Employee(int id) &#123;
+    this.id = id;
+    System.out.println(&quot;Employee(int id).....&quot;);
+&#125;
+
+public Employee(int id, String name) &#123;
+    this.id = id;
+    this.name = name;
+&#125;
+
+public Employee(int id, String name, int age, double salary) &#123;
+
+    this.id = id;
+    this.name = name;
+    this.age = age;
+    this.salary = salary;
+&#125;
+
+@Override
+public String toString() &#123;
+    return &quot;Employee&#123;&quot; + &quot;id=&quot; + id + &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; + &quot;, age=&quot; + age + &quot;, salary=&quot; + salary + &#39;&#125;&#39;;
+&#125;
+
+@Override
+public boolean equals(Object o) &#123;
+    if (this == o)
+        return true;
+    if (o == null || getClass() != o.getClass())
+        return false;
+
+    Employee employee = (Employee) o;
+
+    if (id != employee.id)
+        return false;
+    if (age != employee.age)
+        return false;
+    if (Double.compare(employee.salary, salary) != 0)
+        return false;
+    return name != null ? name.equals(employee.name) : employee.name == null;
+&#125;
+
+@Override
+public int hashCode() &#123;
+    int result;
+    long temp;
+    result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + age;
+    temp = Double.doubleToLongBits(salary);
+    result = 31 * result + (int) (temp ^ (temp &gt;&gt;&gt; 32));
+    return result;
+&#125;
+</code></pre>
+<p>}</p>
+<p>2、测试类</p>
+<p>import org.junit.Test;</p>
+<p>import java.io.PrintStream;<br>import java.util.Comparator;<br>import java.util.function.BiPredicate;<br>import java.util.function.Consumer;<br>import java.util.function.Function;<br>import java.util.function.Supplier;</p>
+<p>/**</p>
+<ul>
+<li><p>方法引用的使用</p>
+</li>
+<li></li>
+<li><p>1.使用情境：当要传递给Lambda体的操作，已经有实现的方法了，可以使用方法引用！</p>
+</li>
+<li></li>
+<li><p>2.方法引用，本质上就是Lambda表达式，而Lambda表达式作为函数式接口的实例。所以</p>
+</li>
+<li><p>方法引用，也是函数式接口的实例。<br>*</p>
+</li>
+<li><ol start="3">
+<li>使用格式：  类(或对象) :: 方法名</li>
+</ol>
+<p>*</p>
+</li>
+<li><ol start="4">
+<li>具体分为如下的三种情况：</li>
+</ol>
+</li>
+<li><p>情况1     对象 :: 非静态方法</p>
+</li>
+<li><p>情况2     类 :: 静态方法<br>*</p>
+</li>
+<li><p>情况3     类 :: 非静态方法<br>*</p>
+</li>
+<li><ol start="5">
+<li>方法引用使用的要求：要求接口中的抽象方法的形参列表和返回值类型与方法引用的方法的</li>
+</ol>
+</li>
+<li><p>   形参列表和返回值类型相同！（针对于情况1和情况2）</p>
+</li>
+<li><p>/<br>public class MethodRefTest {</p>
+<p>  // 情况一：对象 :: 实例方法<br>  //Consumer中的void accept(T t)<br>  //PrintStream中的void println(T t)<br>  @Test<br>  public void test() {</p>
+<pre><code>  Consumer&lt;String&gt; c1 = str -&gt; System.out.println(str);
+  c1.accept(&quot;兖州&quot;);
+
+  System.out.println(&quot;+++++++++++++&quot;);
+  PrintStream ps = System.out;
+  Consumer&lt;String&gt; c2 = ps::println;
+  c2.accept(&quot;xian&quot;);
+</code></pre>
+<p>  }</p>
+<p>  //Supplier中的T get()<br>  //Employee中的String getName()<br>  @Test<br>  public void test2() {</p>
+<pre><code>  Employee emp = new Employee(004,&quot;Nice&quot;,19,4200);
+
+  Supplier&lt;String&gt; sk1 = () -&gt; emp.getName();
+  System.out.println(sk1.get());
+  
+  System.out.println(&quot;*******************&quot;);
+  Supplier&lt;String&gt; sk2 = emp::getName;
+  System.out.println(sk2.get());
+</code></pre>
+<p>  }<br>}</p>
+</li>
+</ul>
+<p>6.2、方法引用的使用情况2<br>1、Employee类——同上</p>
+<p>2、测试类</p>
+<p>import org.junit.Test;<br>import java.util.Comparator;<br>import java.util.function.Function;</p>
+<p>public class MethodRefTest {</p>
+<pre><code>// 情况二：类 :: 静态方法
+//Comparator中的int compare(T t1,T t2)
+//Integer中的int compare(T t1,T t2)
+@Test
+public void test3() &#123;
+    Comparator&lt;Integer&gt; com1 = (t1, t2) -&gt; Integer.compare(t1,t2);
+    System.out.println(com1.compare(21,20));
+
+    System.out.println(&quot;+++++++++++++++&quot;);
+
+    Comparator&lt;Integer&gt; com2 = Integer::compare;
+    System.out.println(com2.compare(15,7));
+&#125;
+
+//Function中的R apply(T t)
+//Math中的Long round(Double d)
+@Test
+public void test4() &#123;
+    Function&lt;Double,Long&gt; func = new Function&lt;Double, Long&gt;() &#123;
+        @Override
+        public Long apply(Double d) &#123;
+            return Math.round(d);
+        &#125;
+    &#125;;
+
+    System.out.println(&quot;++++++++++++++++++&quot;);
+
+    Function&lt;Double,Long&gt; func1 = d -&gt; Math.round(d);
+    System.out.println(func1.apply(14.1));
+
+    System.out.println(&quot;++++++++++++++++++&quot;);
+
+    Function&lt;Double,Long&gt; func2 = Math::round;
+    System.out.println(func2.apply(17.4));
+&#125;
+</code></pre>
+<p>}</p>
+<p>6.2、方法引用的使用情况3<br>1、Employee类——同上</p>
+<p>2、测试类</p>
+<p>import org.junit.Test;</p>
+<p>import java.util.Comparator;<br>import java.util.function.BiPredicate;<br>import java.util.function.Function;</p>
+<p>public class MethodRefTest {</p>
+<pre><code>// 情况三：类 :: 实例方法  (有难度)
+// Comparator中的int comapre(T t1,T t2)
+// String中的int t1.compareTo(t2)
+@Test
+public void test5() &#123;
+    Comparator&lt;String&gt; com1 = (s1,s2) -&gt; s1.compareTo(s2);
+    System.out.println(com1.compare(&quot;abc&quot;,&quot;abd&quot;));
+
+    System.out.println(&quot;++++++++++++++++&quot;);
+
+    Comparator&lt;String&gt; com2 = String :: compareTo;
+    System.out.println(com2.compare(&quot;abd&quot;,&quot;abm&quot;));
+&#125;
+
+//BiPredicate中的boolean test(T t1, T t2);
+//String中的boolean t1.equals(t2)
+@Test
+public void test6() &#123;
+    BiPredicate&lt;String,String&gt; pre1 = (s1, s2) -&gt; s1.equals(s2);
+    System.out.println(pre1.test(&quot;MON&quot;,&quot;MON&quot;));
+
+    System.out.println(&quot;++++++++++++++++++++&quot;);
+    
+    BiPredicate&lt;String,String&gt; pre2 = String :: equals;
+    System.out.println(pre2.test(&quot;MON&quot;,&quot;MON&quot;));
+&#125;
+
+// Function中的R apply(T t)
+// Employee中的String getName();
+@Test
+public void test7() &#123;
+    Employee employee = new Employee(007, &quot;Ton&quot;, 21, 8000);
+
+    Function&lt;Employee,String&gt; func1 = e -&gt; e.getName();
+    System.out.println(func1.apply(employee));
+
+    System.out.println(&quot;++++++++++++++++++++++++&quot;);
+
+    Function&lt;Employee,String&gt; f2 = Employee::getName;
+    System.out.println(f2.apply(employee));
+&#125;
+</code></pre>
+<p>}</p>
+<p>6.4、构造器引用与数组引用的使用<br>格式：ClassName::new</p>
+<p>与函数式接口相结合，自动与函数式接口中方法兼容。</p>
+<p>可以把构造器引用赋值给定义的方法，要求构造器参数列表要与接口中抽象方法的参数列表一致！且方法的返回值即为构造器对应类的对象。</p>
+<p>1、Employee类——同上</p>
+<p>2、测试类</p>
+<p>import org.junit.Test;</p>
+<p>import java.util.Arrays;<br>import java.util.function.BiFunction;<br>import java.util.function.Function;<br>import java.util.function.Supplier;</p>
+<p>/**</p>
+<ul>
+<li><p>一、构造器引用</p>
+</li>
+<li><pre><code> 和方法引用类似，函数式接口的抽象方法的形参列表和构造器的形参列表一致。
+</code></pre>
+</li>
+<li><pre><code> 抽象方法的返回值类型即为构造器所属的类的类型
+</code></pre>
+</li>
+<li></li>
+<li><p>二、数组引用</p>
+</li>
+<li><pre><code>可以把数组看做是一个特殊的类，则写法与构造器引用一致。 
+</code></pre>
+</li>
+<li><p>/<br>public class MethodRefTest {</p>
+<p>  //构造器引用<br>  //Supplier中的T get()<br>  //Employee的空参构造器：Employee()<br>  @Test<br>  public void test() {</p>
+<pre><code>  Supplier&lt;Employee&gt; sup = new Supplier&lt;Employee&gt;() &#123;
+      @Override
+      public Employee get() &#123;
+          return new Employee();
+      &#125;
+  &#125;;
+  System.out.println(&quot;+++++++++++++++++++&quot;);
+
+  Supplier&lt;Employee&gt; sk1 = () -&gt; new Employee();
+  System.out.println(sk1.get());
+  
+  System.out.println(&quot;+++++++++++++++++++&quot;);
+  
+  Supplier&lt;Employee&gt; sk2 = Employee::new;
+  System.out.println(sk2.get());
+</code></pre>
+<p>  }</p>
+<p>  //Function中的R apply(T t)<br>  @Test<br>  public void test2() {</p>
+<pre><code>  Function&lt;Integer, Employee&gt; f1 = id -&gt; new Employee(id);
+  Employee employee = f1.apply(7793);
+  System.out.println(employee);
+
+  System.out.println(&quot;+++++++++++++++++++&quot;);
+  
+  Function&lt;Integer, Employee&gt; f2 = Employee::new;
+  Employee employee1 = f2.apply(4545);
+  System.out.println(employee1);
+</code></pre>
+<p>  }</p>
+<p>  //BiFunction中的R apply(T t,U u)<br>  @Test<br>  public void test3() {</p>
+<pre><code>  BiFunction&lt;Integer, String, Employee&gt; f1 = (id, name) -&gt; new Employee(id, name);
+  System.out.println(f1.apply(2513, &quot;Fruk&quot;));
+
+  System.out.println(&quot;*******************&quot;);
+  
+  BiFunction&lt;Integer, String, Employee&gt; f2 = Employee::new;
+  System.out.println(f2.apply(9526, &quot;Bon&quot;));
+</code></pre>
+<p>  }</p>
+<p>  //数组引用<br>  //Function中的R apply(T t)<br>  @Test<br>  public void test4() {</p>
+<pre><code>  Function&lt;Integer, String[]&gt; f1 = length -&gt; new String[length];
+  String[] arr1 = f1.apply(7);
+  System.out.println(Arrays.toString(arr1));
+
+  System.out.println(&quot;+++++++++++++++++++&quot;);
+  
+  Function&lt;Integer, String[]&gt; f2 = String[]::new;
+  String[] arr2 = f2.apply(9);
+  System.out.println(Arrays.toString(arr2));
+</code></pre>
+<p>  }<br>}</p>
+</li>
+</ul>
+<h2 id="07、强大的Stream-API"><a href="#07、强大的Stream-API" class="headerlink" title="07、强大的Stream API"></a>07、强大的Stream API</h2><p>7.1、Stream API的概述<br>Java8中有两大最为重要的改变。第一个是Lambda 表达式；另外一个则是Stream API。<br>Stream API ( java.util.stream)把真正的函数式编程风格引入到Java中。这是目前为止对Java类库最好的补充，因为Stream API可以极大提供Java程序员的生产力，让程序员写出高效率、干净、简洁的代码。<br>Stream 是Java8 中处理集合的关键抽象概念，它可以指定你希望对集合进行的操作，可以执行非常复杂的查找、过滤和映射数据等操作。使用Stream API 对集合数据进行操作，就类似于使用SQL 执行的数据库查询。也可以使用Stream API 来并行执行操作。简言之，Stream API 提供了一种高效且易于使用的处理数据的方式。<br>为什么要使用Stream API<br>实际开发中，项目中多数数据源都来自于Mysql，Oracle等。但现在数据源可以更多了，有MongDB，Radis等，而这些NoSQL的数据就需要Java层面去处理。<br>Stream 和Collection 集合的区别：Collection 是一种静态的内存数据结构，而Stream 是有关计算的。前者是主要面向内存，存储在内存中，后者主要是面向CPU，通过CPU 实现计算。<br>/**</p>
+<ul>
+<li>1.Stream关注的是对数据的运算，与CPU打交道</li>
+<li>  集合关注的是数据的存储，与内存打交道</li>
+<li></li>
+<li>2.</li>
+<li>①Stream 自己不会存储元素。</li>
+<li>②Stream 不会改变源对象。相反，他们会返回一个持有结果的新Stream。</li>
+<li>③Stream 操作是延迟执行的。这意味着他们会等到需要结果的时候才执行</li>
+<li></li>
+<li>3.Stream 执行流程</li>
+<li>① Stream的实例化</li>
+<li>② 一系列的中间操作（过滤、映射、…)</li>
+<li>③ 终止操作</li>
+<li></li>
+<li>4.说明：</li>
+<li>4.1 一个中间操作链，对数据源的数据进行处理</li>
+<li>4.2 一旦执行终止操作，就执行中间操作链，并产生结果。之后，不会再被使用</li>
+<li>/</li>
+</ul>
+<p>7.2、Stream的实例化<br>1、EmployeeData类</p>
+<p>import java.util.ArrayList;<br>import java.util.List;<br>/**</p>
+<ul>
+<li>提供用于测试的数据</li>
+<li>/<br>  public class EmployeeData {  public static List<Employee> getEmployees(){<pre><code>  List&lt;Employee&gt; list = new ArrayList&lt;&gt;();
+  
+  list.add(new Employee(1001, &quot;马化腾&quot;, 34, 6000.38));
+  list.add(new Employee(1002, &quot;马云&quot;, 12, 9876.12));
+  list.add(new Employee(1003, &quot;刘强东&quot;, 33, 3000.82));
+  list.add(new Employee(1004, &quot;雷军&quot;, 26, 7657.37));
+  list.add(new Employee(1005, &quot;李彦宏&quot;, 65, 5555.32));
+  list.add(new Employee(1006, &quot;比尔盖茨&quot;, 42, 9500.43));
+  list.add(new Employee(1007, &quot;任正非&quot;, 26, 4333.32));
+  list.add(new Employee(1008, &quot;扎克伯格&quot;, 35, 2500.32));
+  
+  return list;
+</code></pre>
+  }<br>  }</li>
+</ul>
+<p> 2、Employee类</p>
+<p>public class Employee {</p>
+<pre><code>private int id;
+private String name;
+private int age;
+private double salary;
+
+public int getId() &#123;
+    return id;
+&#125;
+
+public void setId(int id) &#123;
+    this.id = id;
+&#125;
+
+public String getName() &#123;
+    return name;
+&#125;
+
+public void setName(String name) &#123;
+    this.name = name;
+&#125;
+
+public int getAge() &#123;
+    return age;
+&#125;
+
+public void setAge(int age) &#123;
+    this.age = age;
+&#125;
+
+public double getSalary() &#123;
+    return salary;
+&#125;
+
+public void setSalary(double salary) &#123;
+    this.salary = salary;
+&#125;
+
+public Employee() &#123;
+    System.out.println(&quot;Employee().....&quot;);
+&#125;
+
+public Employee(int id) &#123;
+    this.id = id;
+    System.out.println(&quot;Employee(int id).....&quot;);
+&#125;
+
+public Employee(int id, String name) &#123;
+    this.id = id;
+    this.name = name;
+&#125;
+
+public Employee(int id, String name, int age, double salary) &#123;
+
+    this.id = id;
+    this.name = name;
+    this.age = age;
+    this.salary = salary;
+&#125;
+
+@Override
+public String toString() &#123;
+    return &quot;Employee&#123;&quot; + &quot;id=&quot; + id + &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; + &quot;, age=&quot; + age + &quot;, salary=&quot; + salary + &#39;&#125;&#39;;
+&#125;
+
+@Override
+public boolean equals(Object o) &#123;
+    if (this == o)
+        return true;
+    if (o == null || getClass() != o.getClass())
+        return false;
+
+    Employee employee = (Employee) o;
+
+    if (id != employee.id)
+        return false;
+    if (age != employee.age)
+        return false;
+    if (Double.compare(employee.salary, salary) != 0)
+        return false;
+    return name != null ? name.equals(employee.name) : employee.name == null;
+&#125;
+
+@Override
+public int hashCode() &#123;
+    int result;
+    long temp;
+    result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + age;
+    temp = Double.doubleToLongBits(salary);
+    result = 31 * result + (int) (temp ^ (temp &gt;&gt;&gt; 32));
+    return result;
+&#125;
+</code></pre>
+<p>}</p>
+<p>3、测试类</p>
+<p>import github2.Employee;<br>import github2.EmployeeData;<br>import org.junit.Test;</p>
+<p>import java.util.Arrays;<br>import java.util.List;<br>import java.util.stream.IntStream;<br>import java.util.stream.Stream;</p>
+<p>/**</p>
+<ul>
+<li><p>测试Stream的实例化</p>
+</li>
+<li><p>/<br>  public class StreamAPITest {</p>
+<p>  //创建 Stream方式一：通过集合<br>  @Test<br>  public void test(){</p>
+<pre><code>  List&lt;Employee&gt; employees = EmployeeData.getEmployees();
+</code></pre>
+</li>
+</ul>
+<p>//        default Stream<E> stream() : 返回一个顺序流<br>        Stream<Employee> stream = employees.stream();</p>
+<p>//        default Stream<E> parallelStream() : 返回一个并行流<br>        Stream<Employee> parallelStream = employees.parallelStream();<br>    }</p>
+<pre><code>//创建 Stream方式二：通过数组
+@Test
+public void test2()&#123;
+    int[] arr = new int[]&#123;1,2,3,4,5,6&#125;;
+    //调用Arrays类的static &lt;T&gt; Stream&lt;T&gt; stream(T[] array): 返回一个流
+    IntStream stream = Arrays.stream(arr);
+
+    Employee e1 = new Employee(1001,&quot;Hom&quot;);
+    Employee e2 = new Employee(1002,&quot;Nut&quot;);
+    Employee[] arr1 = new Employee[]&#123;e1,e2&#125;;
+
+    Stream&lt;Employee&gt; stream1 = Arrays.stream(arr1);
+&#125;
+//创建 Stream方式三：通过Stream的of()
+@Test
+public void test3()&#123;
+    Stream&lt;Integer&gt; stream = Stream.of(1, 2, 3, 4, 5, 6);
+&#125;
+
+//创建 Stream方式四：创建无限流
+@Test
+public void test4()&#123;
+</code></pre>
+<p>//      迭代<br>//      public static<T> Stream<T> iterate(final T seed, final UnaryOperator<T> f)<br>        //遍历前10个偶数<br>        Stream.iterate(0, t -&gt; t + 2).limit(10).forEach(System.out::println);</p>
+<p>//      生成<br>//      public static<T> Stream<T> generate(Supplier<T> s)<br>        Stream.generate(Math::random).limit(10).forEach(System.out::println);<br>    }<br>}</p>
+<p>7.3、Stream的中间操作：筛选与切片<br>多个中间操作可以连接起来形成一个流水线，除非流水线上触发终止操作，否则中间操作不会执行任何的处理！而在终止操作时一次性全部处理，称为“惰性求值”。</p>
+<p>方法    描述<br>filter(Predicate p)    接收Lambda ，从流中排除某些元素<br>distinct()    筛选，通过流所生成元素的hashCode() 和equals() 去除重复元素<br>limit(long maxSize)    截断流，使其元素不超过给定数量<br>skip(long n)    跳过元素，返回一个扔掉了前n 个元素的流。若流中元素不足n 个，则返回一个空流。与limit(n)互补<br>import github2.Employee;<br>import github2.EmployeeData;<br>import org.junit.Test;</p>
+<p>import java.util.List;<br>import java.util.stream.Stream;</p>
+<p>/**</p>
+<ul>
+<li><p>测试Stream的中间操作</p>
+</li>
+<li><p>/<br>  public class StreamAPITest2 {</p>
+<p>  //1-筛选与切片<br>  @Test<br>  public void test(){</p>
+<pre><code>  List&lt;Employee&gt; list = EmployeeData.getEmployees();
+</code></pre>
+<p>  //        filter(Predicate p)——接收 Lambda ， 从流中排除某些元素。</p>
+<pre><code>  Stream&lt;Employee&gt; stream = list.stream();
+  //练习：查询员工表中薪资大于7000的员工信息
+  stream.filter(e -&gt; e.getSalary() &gt; 7000).forEach(System.out::println);
+
+  System.out.println(&quot;+++++++++++++++++++++++&quot;);
+</code></pre>
+<p>  //        limit(n)——截断流，使其元素不超过给定数量。</p>
+<pre><code>  list.stream().limit(3).forEach(System.out::println);
+  System.out.println(&quot;+++++++++++++++++++++++&quot;);
+</code></pre>
+</li>
+</ul>
+<p>//        skip(n) —— 跳过元素，返回一个扔掉了前 n 个元素的流。若流中元素不足 n 个，则返回一个空流。与 limit(n) 互补<br>        list.stream().skip(3).forEach(System.out::println);</p>
+<pre><code>    System.out.println(&quot;+++++++++++++++++++++++&quot;);
+</code></pre>
+<p>//        distinct()——筛选，通过流所生成元素的 hashCode() 和 equals() 去除重复元素</p>
+<pre><code>    list.add(new Employee(1013,&quot;李飞&quot;,42,8500));
+    list.add(new Employee(1013,&quot;李飞&quot;,41,8200));
+    list.add(new Employee(1013,&quot;李飞&quot;,28,6000));
+    list.add(new Employee(1013,&quot;李飞&quot;,39,7800));
+    list.add(new Employee(1013,&quot;李飞&quot;,40,8000));
+</code></pre>
+<p>//        System.out.println(list);</p>
+<pre><code>    list.stream().distinct().forEach(System.out::println);
+&#125;
+</code></pre>
+<p>}</p>
+<p>7.4、Stream的中间操作：映射<br>方法    描述<br>map(Function f)    接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素。<br>mapToDouble(ToDoubleFunction f)    接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的DoubleStream。<br>mapToInt(ToIntFunction f)    接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的IntStream。<br>mapToLong(ToLongFunction f)    接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的LongStream。<br>flatMap(Function f)    接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流<br>import github2.Employee;<br>import github2.EmployeeData;<br>import org.junit.Test;</p>
+<p>import java.util.ArrayList;<br>import java.util.Arrays;<br>import java.util.List;<br>import java.util.stream.Stream;</p>
+<p>/**</p>
+<ul>
+<li><p>测试Stream的中间操作</p>
+</li>
+<li><p>/<br>  public class StreamAPITest2 {</p>
+<p>  //2-映射<br>  @Test<br>  public void test2(){<br>  //        map(Function f)——接收一个函数作为参数，将元素转换成其他形式或提取信息，该函数会被应用到每个元素上，并将其映射成一个新的元素。</p>
+<pre><code>  List&lt;String&gt; list = Arrays.asList(&quot;aa&quot;, &quot;bb&quot;, &quot;cc&quot;, &quot;dd&quot;);
+  list.stream().map(str -&gt; str.toUpperCase()).forEach(System.out::println);
+</code></pre>
+</li>
+</ul>
+<p>//        练习1：获取员工姓名长度大于3的员工的姓名。<br>        List<Employee> employees = EmployeeData.getEmployees();<br>        Stream<String> namesStream = employees.stream().map(Employee::getName);<br>        namesStream.filter(name -&gt; name.length() &gt; 3).forEach(System.out::println);<br>        System.out.println();</p>
+<pre><code>    //练习2：
+    Stream&lt;Stream&lt;Character&gt;&gt; streamStream = list.stream().map(StreamAPITest2::fromStringToStream);
+    
+    streamStream.forEach(s -&gt;&#123;
+        s.forEach(System.out::println);
+    &#125;);
+    System.out.println(&quot;++++++++++++++++++++++&quot;);
+</code></pre>
+<p>//        flatMap(Function f)——接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流。<br>        Stream<Character> characterStream = list.stream().flatMap(StreamAPITest2::fromStringToStream);</p>
+<pre><code>    characterStream.forEach(System.out::println);
+&#125;
+
+//将字符串中的多个字符构成的集合转换为对应的Stream的实例
+public static Stream&lt;Character&gt; fromStringToStream(String str)&#123;//aa
+    ArrayList&lt;Character&gt; list = new ArrayList&lt;&gt;();
+    for(Character c : str.toCharArray())&#123;
+        list.add(c);
+    &#125;
+    return list.stream();
+&#125;
+
+@Test
+public void test3()&#123;
+    ArrayList list1 = new ArrayList();
+    list1.add(25);
+    list1.add(33);
+    list1.add(14);
+
+    ArrayList list2 = new ArrayList();
+    list2.add(51);
+    list2.add(23);
+    list2.add(61);
+</code></pre>
+<p>//        list1.add(list2);<br>        list1.addAll(list2);<br>        System.out.println(list1);<br>    }<br>}</p>
+<p>7.5、Stream的中间操作：排序<br>方法    描述<br>sorted()    产生一个新流，其中按自然顺序排序<br>sorted(Comparator com)    产生一个新流，其中按比较器顺序排序<br>import github2.Employee;<br>import github2.EmployeeData;<br>import org.junit.Test;</p>
+<p>import java.util.ArrayList;<br>import java.util.Arrays;<br>import java.util.List;<br>import java.util.stream.Stream;</p>
+<p>/**</p>
+<ul>
+<li><p>测试Stream的中间操作</p>
+</li>
+<li><p>/<br>  public class StreamAPITest2 {</p>
+<p>  //3-排序<br>  @Test<br>  public void test4(){<br>  //        sorted()——自然排序</p>
+<pre><code>  List&lt;Integer&gt; list = Arrays.asList(25,45,36,12,85,64,72,-95,4);
+  list.stream().sorted().forEach(System.out::println);
+  //抛异常，原因:Employee没有实现Comparable接口
+</code></pre>
+<p>  //        List<Employee> employees = EmployeeData.getEmployees();<br>  //        employees.stream().sorted().forEach(System.out::println);</p>
+</li>
+</ul>
+<p>//        sorted(Comparator com)——定制排序</p>
+<pre><code>    List&lt;Employee&gt; employees = EmployeeData.getEmployees();
+    employees.stream().sorted( (e1,e2) -&gt; &#123;
+
+        int ageValue = Integer.compare(e1.getAge(),e2.getAge());
+        if(ageValue != 0)&#123;
+            return ageValue;
+        &#125;else&#123;
+            return -Double.compare(e1.getSalary(),e2.getSalary());
+        &#125;
+
+    &#125;).forEach(System.out::println);
+&#125;
+</code></pre>
+<p>}</p>
+<p>7.6、Stream的终止操作：匹配与查找<br>终端操作会从流的流水线生成结果。其结果可以是任何不是流的值，例如：List、Integer，甚至是void 。<br>流进行了终止操作后，不能再次使用。<br>方法    描述<br>allMatch(Predicate p)    检查是否匹配所有元素<br>anyMatch(Predicate p)    检查是否至少匹配一个元素<br>noneMatch(Predicate p)    检查是否没有匹配所有元素<br>findFirst()    返回第一个元素<br>findAny()    返回当前流中的任意元素<br>count()    返回流中元素总数<br>max(Comparator c)    返回流中最大值<br>min(Comparator c)    返回流中最小值<br>forEach(Consumer c)    内部迭代(使用Collection 接口需要用户去做迭代，称为外部迭代。相反，Stream API 使用内部迭代——它帮你把迭代做了)<br>import github2.Employee;<br>import github2.EmployeeData;<br>import org.junit.Test;</p>
+<p>import java.util.List;<br>import java.util.Optional;<br>import java.util.stream.Stream;</p>
+<p>public class StreamAPITest3 {<br>    //1-匹配与查找<br>    @Test<br>    public void test(){<br>        List<Employee> employees = EmployeeData.getEmployees();</p>
+<p>//        allMatch(Predicate p)——检查是否匹配所有元素。<br>//          练习：是否所有的员工的年龄都大于18<br>        boolean allMatch = employees.stream().allMatch(e -&gt; e.getAge() &gt; 23);<br>        System.out.println(allMatch);</p>
+<p>//        anyMatch(Predicate p)——检查是否至少匹配一个元素。<br>//         练习：是否存在员工的工资大于 10000<br>        boolean anyMatch = employees.stream().anyMatch(e -&gt; e.getSalary() &gt; 9000);<br>        System.out.println(anyMatch);</p>
+<p>//        noneMatch(Predicate p)——检查是否没有匹配的元素。<br>//          练习：是否存在员工姓“马”<br>        boolean noneMatch = employees.stream().noneMatch(e -&gt; e.getName().startsWith(“马”));<br>        System.out.println(noneMatch);</p>
+<p>//        findFirst——返回第一个元素<br>        Optional<Employee> employee = employees.stream().findFirst();<br>        System.out.println(employee);</p>
+<p>//        findAny——返回当前流中的任意元素<br>        Optional<Employee> employee1 = employees.parallelStream().findAny();<br>        System.out.println(employee1);<br>    }</p>
+<pre><code>@Test
+public void test2()&#123;
+    List&lt;Employee&gt; employees = EmployeeData.getEmployees();
+    
+    // count——返回流中元素的总个数
+    long count = employees.stream().filter(e -&gt; e.getSalary() &gt; 4500).count();
+    System.out.println(count);
+</code></pre>
+<p>//        max(Comparator c)——返回流中最大值<br>//        练习：返回最高的工资：<br>        Stream<Double> salaryStream = employees.stream().map(e -&gt; e.getSalary());<br>        Optional<Double> maxSalary = salaryStream.max(Double::compare);<br>        System.out.println(maxSalary);</p>
+<p>//        min(Comparator c)——返回流中最小值<br>//        练习：返回最低工资的员工<br>        Optional<Employee> employee = employees.stream().min((e1, e2) -&gt; Double.compare(e1.getSalary(), e2.getSalary()));<br>        System.out.println(employee);<br>        System.out.println();</p>
+<p>//        forEach(Consumer c)——内部迭代<br>        employees.stream().forEach(System.out::println);</p>
+<pre><code>    //使用集合的遍历操作
+    employees.forEach(System.out::println);
+&#125;
+</code></pre>
+<p>}</p>
+<p>7.7、Stream的终止操作：归约<br>方法    描述<br>reduce(T iden, BinaryOperator b)    可以将流中元素反复结合起来，得到一个值。返回T<br>reduce(BinaryOperator b)    可以将流中元素反复结合起来，得到一个值。返回Optional<br>备注：map 和reduce 的连接通常称为map-reduce 模式，因Google 用它来进行网络搜索而出名。</p>
+<p>import github2.Employee;<br>import github2.EmployeeData;<br>import org.junit.Test;</p>
+<p>import java.util.Arrays;<br>import java.util.List;<br>import java.util.Optional;<br>import java.util.stream.Stream;</p>
+<p>public class StreamAPITest3 {</p>
+<pre><code>//2-归约
+@Test
+public void test3()&#123;
+</code></pre>
+<p>//        reduce(T identity, BinaryOperator)——可以将流中元素反复结合起来，得到一个值。返回 T<br>//        练习1：计算1-10的自然数的和<br>        List<Integer> list = Arrays.asList(72,25,32,34,43,56,81,15,29,71);<br>        Integer sum = list.stream().reduce(0, Integer::sum);<br>        System.out.println(sum);</p>
+<p>//        reduce(BinaryOperator) ——可以将流中元素反复结合起来，得到一个值。返回 Optional<T><br>//        练习2：计算公司所有员工工资的总和<br>        List<Employee> employees = EmployeeData.getEmployees();<br>        Stream<Double> salaryStream = employees.stream().map(Employee::getSalary);<br>//        Optional<Double> sumMoney = salaryStream.reduce(Double::sum);<br>        Optional<Double> sumMoney = salaryStream.reduce((d1,d2) -&gt; d1 + d2);<br>        System.out.println(sumMoney.get());<br>    }<br>}</p>
+<p>7.8、Stream的终止操作：收集<br>方法    描述<br>collect(Collector c)    将流转换为其他形式。接收一个Collector接口的实现，用于给Stream中元素做汇总的方法<br>import github2.Employee;<br>import github2.EmployeeData;<br>import org.junit.Test;</p>
+<p>import java.util.Arrays;<br>import java.util.List;<br>import java.util.Optional;<br>import java.util.Set;<br>import java.util.stream.Collectors;<br>import java.util.stream.Stream;</p>
+<p>public class StreamAPITest3 {</p>
+<pre><code>//3-收集
+@Test
+public void test4() &#123;
+</code></pre>
+<p>//        collect(Collector c)——将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法<br>//        练习1：查找工资大于6000的员工，结果返回为一个List或Set</p>
+<pre><code>    List&lt;Employee&gt; employees = EmployeeData.getEmployees();
+    List&lt;Employee&gt; employeeList = employees.stream().filter(e -&gt; e.getSalary() &gt; 6000).collect(Collectors.toList());
+
+    employeeList.forEach(System.out::println);
+    
+    System.out.println(&quot;++++++++++++++++++&quot;);
+    
+    Set&lt;Employee&gt; employeeSet = employees.stream().filter(e -&gt; e.getSalary() &gt; 6000).collect(Collectors.toSet());
+
+    employeeSet.forEach(System.out::println);
+&#125;
+</code></pre>
+<p>}</p>
+<p>Collector 接口中方法的实现决定了如何对流执行收集的操作(如收集到List、Set、Map)。</p>
+<p>Collectors实用类提供了很多静态方法，可以方便地创建常见收集器实例，具体方法与实例如下表：</p>
+<h2 id="08、Optional类"><a href="#08、Optional类" class="headerlink" title="08、Optional类"></a>08、Optional类</h2><p>8.1、Optional类的介绍<br>到目前为止，臭名昭著的空指针异常是导致Java应用程序失败的最常见原因。以前，为了解决空指针异常，Google公司著名的Guava项目引入了Optional类，Guava通过使用检查空值的方式来防止代码污染，它鼓励程序员写更干净的代码。受到Google Guava的启发，Optional类已经成为Java 8类库的一部分。</p>
+<p>Optional 类(java.util.Optional) 是一个容器类，它可以保存类型T的值，代表这个值存在。或者仅仅保存null，表示这个值不存在。原来用null 表示一个值不存在，现在Optional 可以更好的表达这个概念。并且可以避免空指针异常。<br>Optional类的Javadoc描述如下：这是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。<br>Optional提供很多有用的方法，这样我们就不用显式进行空值检测。<br>创建Optional类对象的方法：<br>Optional.of(T t): 创建一个Optional 实例，t必须非空；<br>Optional.empty() : 创建一个空的Optional 实例<br>Optional.ofNullable(T t)：t可以为null<br>判断Optional容器中是否包含对象：<br>boolean isPresent() : 判断是否包含对象<br>void ifPresent(Consumer&lt;? super T&gt; consumer) ：如果有值，就执行Consumer接口的实现代码，并且该值会作为参数传给它。<br>获取Optional容器的对象：<br>T get(): 如果调用对象包含值，返回该值，否则抛异常<br>T orElse(T other) ：如果有值则将其返回，否则返回指定的other对象。<br>T orElseGet(Supplier&lt;? extends T&gt; other) ：如果有值则将其返回，否则返回由Supplier接口实现提供的对象。<br>T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) ：如果有值则将其返回，否则抛出由Supplier接口实现提供的异常。<br>1、Boy类</p>
+<p>public class Boy {<br>    private Girl girl;</p>
+<pre><code>public Boy() &#123;
+&#125;
+
+public Boy(Girl girl) &#123;
+    this.girl = girl;
+&#125;
+
+public Girl getGirl() &#123;
+    return girl;
+&#125;
+
+public void setGirl(Girl girl) &#123;
+    this.girl = girl;
+&#125;
+
+@Override
+public String toString() &#123;
+    return &quot;Boy&#123;&quot; +
+            &quot;girl=&quot; + girl +
+            &#39;&#125;&#39;;
+&#125;
+</code></pre>
+<p>}</p>
+<p>2、Girl类</p>
+<p>public class Girl {<br>    private String name;</p>
+<pre><code>public Girl() &#123;
+&#125;
+
+public Girl(String name) &#123;
+    this.name = name;
+&#125;
+
+public String getName() &#123;
+    return name;
+&#125;
+
+public void setName(String name) &#123;
+    this.name = name;
+&#125;
+
+@Override
+public String toString() &#123;
+    return &quot;Girl&#123;&quot; +
+            &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+            &#39;&#125;&#39;;
+&#125;
+</code></pre>
+<p>}</p>
+<p>3、测试类</p>
+<p>import org.junit.Test;<br>import java.util.Optional;</p>
+<p>/**</p>
+<ul>
+<li><p>Optional类：为了在程序中避免出现空指针异常而创建的。</p>
+</li>
+<li></li>
+<li><p>常用的方法：ofNullable(T t)</p>
+</li>
+<li><pre><code>      orElse(T t)
+</code></pre>
+</li>
+<li><p>/<br>public class OptionalTest {<br>  /**</p>
+<ul>
+<li>Optional.of(T t) : 创建一个 Optional 实例，t必须非空；</li>
+<li>Optional.empty() : 创建一个空的 Optional 实例</li>
+<li>Optional.ofNullable(T t)：t可以为null</li>
+<li>/<br>  @Test<br>  public void test(){<br>  Girl girl = new Girl();<br>//        girl = null;<br>  //of(T t):保证t是非空的<br>  Optional<Girl> optionalGirl = Optional.of(girl);<br>  }</li>
+</ul>
+<p>  @Test<br>  public void test2(){</p>
+<pre><code>  Girl girl = new Girl();
+</code></pre>
+<p>//        girl = null;</p>
+<pre><code>  //ofNullable(T t)：t可以为null
+  Optional&lt;Girl&gt; optionalGirl = Optional.ofNullable(girl);
+  System.out.println(optionalGirl);
+  //orElse(T t1):如果单前的Optional内部封装的t是非空的，则返回内部的t.
+  //如果内部的t是空的，则返回orElse()方法中的参数t1.
+  Girl girl1 = optionalGirl.orElse(new Girl(&quot;&quot;));
+  System.out.println(girl1);
+</code></pre>
+<p>  }<br>}</p>
+</li>
+</ul>
+<p>8.2、Optional类的使用举例<br>1、测试类</p>
+<p>import org.junit.Test;<br>import java.util.Optional;</p>
+<p>/**</p>
+<ul>
+<li><p>Optional类：为了在程序中避免出现空指针异常而创建的。</p>
+</li>
+<li></li>
+<li><p>常用的方法：ofNullable(T t)</p>
+</li>
+<li><pre><code>      orElse(T t)
+</code></pre>
+</li>
+<li><p>/<br>public class OptionalTest {</p>
+<p>  @Test<br>  public void test3(){</p>
+<pre><code>  Boy boy = new Boy();
+  boy = null;
+  String girlName = getGirlName(boy);
+  System.out.println(girlName);
+</code></pre>
+<p>  }</p>
+<p>  private String getGirlName(Boy boy) {</p>
+<pre><code>  return boy.getGirl().getName();
+</code></pre>
+<p>  }</p>
+<p>  //优化以后的getGirlName():<br>  public String getGirlName1(Boy boy){</p>
+<pre><code>  if(boy != null)&#123;
+      Girl girl = boy.getGirl();
+      if(girl != null)&#123;
+          return girl.getName();
+      &#125;
+  &#125;
+  return null;
+</code></pre>
+<p>  }</p>
+<p>  @Test<br>  public void test4(){</p>
+<pre><code>  Boy boy = new Boy();
+  boy = null;
+  String girlName = getGirlName1(boy);
+  System.out.println(girlName);
+</code></pre>
+<p>  }</p>
+<p>  //使用Optional类的getGirlName():<br>  public String getGirlName2(Boy boy){</p>
+<pre><code>  Optional&lt;Boy&gt; boyOptional = Optional.ofNullable(boy);
+  //此时的boy1一定非空
+  Boy boy1 = boyOptional.orElse(new Boy(new Girl(&quot;朱淑贞&quot;)));
+  
+  Girl girl = boy1.getGirl();
+  
+  Optional&lt;Girl&gt; girlOptional = Optional.ofNullable(girl);
+  //girl1一定非空
+  Girl girl1 = girlOptional.orElse(new Girl(&quot;阿青&quot;));
+  
+  return girl1.getName();
+</code></pre>
+<p>  }</p>
+<p>  @Test<br>  public void test5(){</p>
+<pre><code>  Boy boy = null;
+  boy = new Boy();
+  boy = new Boy(new Girl(&quot;李清照&quot;));
+  String girlName = getGirlName2(boy);
+  System.out.println(girlName);
+</code></pre>
+<p>  }<br>}</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/06/12/spring5%E5%9F%BA%E7%A1%80/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LAYCHOU</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">68k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:02</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  <!-- ҳ����С���� -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

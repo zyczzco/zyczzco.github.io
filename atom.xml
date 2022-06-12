@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-06-12T13:09:31.113Z</updated>
+  <updated>2022-06-12T13:19:20.293Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue入门学习</title>
+    <link href="http://example.com/2022/06/12/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2022/06/12/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</id>
+    <published>2022-06-12T13:18:12.000Z</published>
+    <updated>2022-06-12T13:19:20.293Z</updated>
+    
+    
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&quot;&quot; type=&quot;checkbox&quot;&gt; &lt;h1 id=&quot;vue入门学习&quot;&gt;&lt;a href=&quot;#vue入门学习&quot; class=&quot;headerlink&quot; title=&quot;vue入门学习&quot;&gt;&lt;/a&gt;vue入门学习&lt;/h1&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;1-MVVM-框架&quot;&gt;&lt;a href=&quot;#1-MVVM-框架&quot; class=&quot;headerlink&quot; title=&quot;1.MVVM 框架&quot;&gt;&lt;/a&gt;1.MVVM 框架&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;M:model&lt;/p&gt;
+&lt;p&gt;数据层（存储数据及对数据的处理如增删改查）&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="VUE" scheme="http://example.com/categories/VUE/"/>
+    
+    
+    <category term="VUE" scheme="http://example.com/tags/VUE/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring5基础</title>

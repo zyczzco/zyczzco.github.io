@@ -1,6 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>vue入门学习</title>
+    <url>/2022/06/12/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<ul>
+<li><input disabled="" type="checkbox"> <h1 id="vue入门学习"><a href="#vue入门学习" class="headerlink" title="vue入门学习"></a>vue入门学习</h1></li>
+</ul>
+<h2 id="1-MVVM-框架"><a href="#1-MVVM-框架" class="headerlink" title="1.MVVM 框架"></a>1.MVVM 框架</h2><ul>
+<li><p>M:model</p>
+<p>数据层（存储数据及对数据的处理如增删改查）</p>
+<span id="more"></span></li>
+<li><p>V：view</p>
+<p>视图层(UI用户界面)</p>
+</li>
+<li><p>VM： ViewModel</p>
+<p>业务逻辑层（一切 js 可视为业务逻辑）,及时修改，及时编译，双向绑定了View层和Model层</p>
+</li>
+<li><p>v-model 双向绑定的演示</p>
+<p>（1）引入vue.js</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(2) html代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    输入的文本：&lt;input type=&quot;text&quot; v-model=&quot;message&quot;&gt; &#123; &#123;message&#125; &#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            message: &quot;123&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）演示view的改变，导致model层的改变</p>
+<p><img src="https://cdn.jsdelivr.net/gh/bomingxu/picgo/image/20210623140245.png" alt="image-20210623140245731"></p>
+</li>
+</ul>
+<h2 id="2-vue的七大属性"><a href="#2-vue的七大属性" class="headerlink" title="2.vue的七大属性"></a>2.vue的七大属性</h2><ul>
+<li><p>el属性</p>
+<p>用来指示vue编译器从什么地方开始解析 vue的语法，可以说是一个占位符。</p>
+</li>
+<li><p>data属性</p>
+<p>用来组织从view中抽象出来的属性，可以说将视图的数据抽象出来存放在data中。</p>
+</li>
+<li><p>template属性</p>
+<p>用来设置模板，会替换页面元素，包括占位符。</p>
+</li>
+<li><p>methods属性</p>
+<p>放置页面中的业务逻辑，js方法一般都放置在methods中</p>
+</li>
+<li><p>render属性</p>
+<p>创建真正的Virtual Dom</p>
+</li>
+<li><p>computed属性</p>
+<p>用来计算</p>
+</li>
+<li><p>watch属性</p>
+<p>watch:function(new,old){}</p>
+<p>监听data中数据的变化</p>
+<p>两个参数，一个返回新值，一个返回旧值</p>
+</li>
+</ul>
+<h2 id="3-vue的基本语法"><a href="#3-vue的基本语法" class="headerlink" title="3. vue的基本语法"></a>3. vue的基本语法</h2><h3 id="3-1-v-if-v-else-if-v-else"><a href="#3-1-v-if-v-else-if-v-else" class="headerlink" title="3.1 v-if v-else-if v-else"></a>3.1 v-if v-else-if v-else</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;h1 v-if=&quot;type===&#x27;A&#x27;&quot;&gt;A&lt;/h1&gt;</span><br><span class="line">&lt;h1 v-else-if=&quot;type===&#x27;B&#x27;&quot;&gt;B&lt;/h1&gt;</span><br><span class="line">&lt;h1 v-else&gt;C&lt;/h1&gt;</span><br><span class="line">data: &#123;</span><br><span class="line">    type: &#x27;A&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-v-for"><a href="#3-2-v-for" class="headerlink" title="3.2 v-for"></a>3.2 v-for</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;li v-for=&quot;(item,index) in items&quot;&gt;&#123; &#123;index&#125; &#125; &#123; &#123;item.message&#125; &#125;&lt;/li&gt;</span><br><span class="line">data: &#123;</span><br><span class="line">    items: [</span><br><span class="line">        &#123;message: &#x27;kuansheng说java&#x27;&#125;,</span><br><span class="line">        &#123;message: &#x27;kuansheng说vue&#x27;&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-vue绑定事件"><a href="#3-2-vue绑定事件" class="headerlink" title="3.2 vue绑定事件"></a>3.2 vue绑定事件</h3><ul>
+<li>v-on 绑定方法</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;button v-on:click=&quot;sayHi&quot;&gt;Click Me&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el:&quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg333: &quot;Hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            sayHi:function(event)&#123;</span><br><span class="line">                alert(this.msg333);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>v-model 双向绑定</li>
+</ul>
+<p>(1) 单选框</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    性别：</span><br><span class="line">    &lt;input type=&quot;radio&quot; value=&quot;男&quot; v-model=&quot;sex&quot;&gt;男</span><br><span class="line">    &lt;input type=&quot;radio&quot; value=&quot;女&quot; v-model=&quot;sex&quot;&gt;女</span><br><span class="line">    &lt;br/&gt;</span><br><span class="line">    你选择了：&#123; &#123;sex&#125; &#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            sex: &quot;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(2) 下拉框</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    下拉框：</span><br><span class="line">    &lt;select v-model=&quot;selected&quot;&gt;</span><br><span class="line">        &lt;option value=&quot;&quot; disabled&gt;---请选择---&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;A&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;B&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;C&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">    &#123; &#123;selected&#125; &#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            selected: &quot;A&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>v-bind 绑定数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;input v-bind:value=message /&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            message: &#x27;hello&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-组件化构建"><a href="#4-组件化构建" class="headerlink" title="4. 组件化构建"></a>4. 组件化构建</h2><h3 id="4-1-组件化的概念"><a href="#4-1-组件化的概念" class="headerlink" title="4.1 组件化的概念"></a>4.1 组件化的概念</h3><p> 组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/bomingxu/picgo/image/20210623140713.png" alt="image-20210623140713502"></p>
+<h3 id="4-2-构建一个简单的组件"><a href="#4-2-构建一个简单的组件" class="headerlink" title="4.2 构建一个简单的组件"></a>4.2 构建一个简单的组件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;    &lt;xbm v-for=&quot;item in items&quot; :project=&quot;item&quot;&gt;&lt;/xbm&gt;&lt;/div&gt;&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;&lt;script&gt;    Vue.component(&quot;xbm&quot;,&#123;        props:[&#x27;project&#x27;],        template: &#x27;&lt;li&gt;&#123; &#123;project&#125; &#125;&lt;/li&gt;&#x27;    &#125;);    var vm = new Vue(&#123;        el: &quot;#app&quot;,        data:&#123;            items:[&quot;java&quot;,&quot;vue&quot;,&quot;linux&quot;],            message: &#x27;hello&#x27;        &#125;    &#125;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-axios-通讯"><a href="#5-axios-通讯" class="headerlink" title="5. axios 通讯"></a>5. axios 通讯</h2><p> 由于vue是一个视图层框架，并且作为严格遵守SOC（关注度分离原则）所以vue.js并不包括ajax通信功能，为了解决通信问题，作者单独开发了一个名叫vue-resouce的插件，不过在进入2.0版本后停止了对该插件的维护，并推荐了Axois框架。少用jquery，因为操作dom过于频繁。</p>
+<ul>
+<li>模拟数据 data.json</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;  &quot;name&quot;: &quot;xbm&quot;,  &quot;url&quot;: &quot;www.baidu.com&quot;,  &quot;page&quot;: 1,  &quot;isNonProfit&quot;: true,  &quot;address&quot;: &#123;    &quot;street&quot;: &quot;含光门&quot;,    &quot;city&quot;: &quot;陕西西安&quot;,    &quot;country&quot;: &quot;中国&quot;  &#125;,  &quot;links&quot;:[&#123;    &quot;name&quot;: &quot;bilibili&quot;,    &quot;url&quot;: &quot;https://space.bilibili.com/95256449&quot;  &#125;,    &#123;      &quot;name&quot;: &quot;狂神说java&quot;,      &quot;url&quot;: &quot;https://blog.kuanngstudy.com&quot;    &#125;,    &#123;      &quot;name&quot;: &quot;百度&quot;,      &quot;url&quot;: &quot;https://www.baidu.com/&quot;    &#125;  ]&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>html代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;    //解决闪烁问题    [v-clock]&#123;        display:none;    &#125;&lt;/style&gt;&lt;div id=&quot;app&quot; v-clock&gt;    &lt;div&gt;&#123; &#123;info.name&#125; &#125;&lt;/div&gt;    &lt;div&gt;&#123; &#123;info.address.city&#125; &#125;&lt;/div&gt;    &lt;a v-bind:href=&quot;info.url&quot;&gt;click me&lt;/a&gt;&lt;/div&gt;&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;&lt;script&gt;    var vm = new Vue(&#123;        el: &quot;#app&quot;,        data()&#123;            return&#123;                info:  &#123;                    name:null,                    url:null,                    address:&#123;                        street:null,                        city:null,                        country:null                    &#125;                &#125;            &#125;        &#125;,        mounted()&#123;//钩子函数 链式编程            axios.get(&#x27;../data.json&#x27;).then(response=&gt;(this.info=response.data));        &#125;    &#125;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用钩子函数mounted方法，在vue实例挂载的时候将json里的数据，加到示例的data函数的info属性中，利用mounted会将el替换成实例下的el的特性，把数据渲染到我们的app中</strong></p>
+<h2 id="6-computed-计算属性"><a href="#6-computed-计算属性" class="headerlink" title="6. computed 计算属性"></a>6. computed 计算属性</h2><p>我们的vue对象中有一个属性，使用缓存来 将不经常变化的属性的结果缓存，下一次可以不用重复，直接从内存中调取，节省系统的资源开销<br>注意事项：</p>
+<ul>
+<li>methods computed不能重名，重名之后会有优先级问题，method优先级高</li>
+</ul>
+<p>特性：</p>
+<ul>
+<li>作用于缓存中，和mybatis十分相似,一旦内部有属性变化就会立刻刷新</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot; v-clock&gt;    Now:&#123; &#123;getTime()&#125; &#125;    Now2:&#123; &#123;getTime2&#125; &#125;&lt;/div&gt;&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;&lt;script&gt;    var vm = new Vue(&#123;        el: &quot;#app&quot;,        data:&#123;            message:&#x27;123&#x27;        &#125;,        methods:&#123;            getTime:function()&#123;                return Date.now();            &#125;        &#125;,        computed:&#123;            getTime2:function()&#123;                this.message;                return Date.now();            &#125;        &#125;    &#125;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-插槽"><a href="#7-插槽" class="headerlink" title="7. 插槽"></a>7. 插槽</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;    &lt;to_do&gt;        &lt;to_title slot=&quot;to_title&quot; v-bind:title=&quot;title&quot;&gt;&lt;/to_title&gt;        &lt;to_items slot=&quot;to_items&quot; v-for=&quot;item in todoItems&quot; v-bind:item=&quot;item&quot;&gt;        &lt;/to_items&gt;    &lt;/to_do&gt;&lt;/div&gt;&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;&lt;script&gt;    Vue.component(&quot;to_do&quot;,&#123;        template: &#x27;&lt;div&gt;&#x27; +                    &#x27;&lt;slot name=&quot;to_title&quot;&gt;&lt;/slot&gt;&#x27;+                    &#x27;&lt;ul&gt;&#x27; +                        &#x27;&lt;slot name=&quot;to_items&quot;&gt;&lt;/slot&gt;&#x27;+                    &#x27;&lt;/ul&gt;&#x27;+                  &#x27;&lt;/div&gt;&#x27;    &#125;);    Vue.component(&quot;to_title&quot;,&#123;        props: [&#x27;title&#x27;],        template: &#x27;&lt;p&gt;&#123; &#123;title&#125; &#125;&lt;/p&gt;&#x27;    &#125;);    Vue.component(&quot;to_items&quot;,&#123;        props: [&#x27;item&#x27;],        template: &#x27;&lt;li&gt;&#123; &#123;item&#125; &#125;&lt;/li&gt;&#x27;    &#125;);    var vm = new Vue(&#123;        el: &quot;#app&quot;,        data: &#123;            title: &#x27;课程列表&#x27;,            todoItems: [&#x27;kuansheng说java&#x27;,&#x27;kuansheng说vue&#x27;]        &#125;    &#125;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-自定义事件分发"><a href="#8-自定义事件分发" class="headerlink" title="8. 自定义事件分发"></a>8. 自定义事件分发</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;    &lt;to_do&gt;        &lt;to_title slot=&quot;to_title&quot; v-bind:title=&quot;title&quot;&gt;&lt;/to_title&gt;        &lt;to_items slot=&quot;to_items&quot; v-for=&quot;(item,index) in todoItems&quot; v-bind:item=&quot;item&quot;                  :index=&quot;index&quot; v-on:remove2=&quot;removeItem(index)&quot;&gt;&lt;/to_items&gt;    &lt;/to_do&gt;&lt;/div&gt;&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;&lt;script&gt;    Vue.component(&quot;to_do&quot;,&#123;        template: &#x27;&lt;div&gt;&#x27; +                    &#x27;&lt;slot name=&quot;to_title&quot;&gt;&lt;/slot&gt;&#x27;+                    &#x27;&lt;ul&gt;&#x27; +                        &#x27;&lt;slot name=&quot;to_items&quot;&gt;&lt;/slot&gt;&#x27;+                    &#x27;&lt;/ul&gt;&#x27;+                  &#x27;&lt;/div&gt;&#x27;    &#125;);    Vue.component(&quot;to_title&quot;,&#123;        props: [&#x27;title&#x27;],        template: &#x27;&lt;p&gt;&#123; &#123;title&#125; &#125;&lt;/p&gt;&#x27;    &#125;);    Vue.component(&quot;to_items&quot;,&#123;        props: [&#x27;item&#x27;,&#x27;index&#x27;],        template: &#x27;&lt;li&gt;&#123; &#123;item&#125; &#125; &lt;button @click=&quot;remove&quot;&gt;删除&lt;/button&gt;&lt;/li&gt;&#x27;,        methods:&#123;            remove:function (index) &#123;                this.$emit(&#x27;remove2&#x27;,index);            &#125;        &#125;    &#125;);    var vm = new Vue(&#123;        el: &quot;#app&quot;,        data: &#123;            title: &#x27;课程列表&#x27;,            todoItems: [&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;,&#x27;D&#x27;]        &#125;,        methods:&#123;            removeItem:function(index)&#123;                this.todoItems.splice(index,1);            &#125;        &#125;    &#125;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/06/15/kuangstudy406de86d-2721-4155-b1ff-fef29c2405f2.png" alt="img"></p>
+<h2 id="9-第一个vue-cli"><a href="#9-第一个vue-cli" class="headerlink" title="9. 第一个vue-cli"></a>9. 第一个vue-cli</h2><p>先安装node.js(<a href="https://www.runoob.com/nodejs/nodejs-install-setup.html">https://www.runoob.com/nodejs/nodejs-install-setup.html</a>)</p>
+<ul>
+<li><p>再安装vue-cli，管理员打开cmd,运行一下命令</p>
+<p>npm install vue-cli -g 或 cnpm install vue-cli -g(推荐使用这个方法)</p>
+</li>
+<li><p>初始化第一个vue项目，在项目安放目录下运行一下命令</p>
+<p>vue init webpack myvue(项目名称)</p>
+</li>
+<li><p>进入项目中</p>
+<p>cd myvue</p>
+</li>
+<li><p>安装依赖</p>
+<p>npm install</p>
+</li>
+<li><p>启动命令</p>
+<p>npm run dev</p>
+</li>
+</ul>
+<h2 id="10、webpack-学习使用"><a href="#10、webpack-学习使用" class="headerlink" title="10、webpack 学习使用"></a>10、webpack 学习使用</h2><p> 作用是把ES6（少数浏览器支持，但开发必须用ES6）规范的代码打包编译成ES5(大多数浏览器支持)规范的代码运行。</p>
+<ul>
+<li><p>node.js遵循commons.js规范</p>
+<p>export 暴露接口</p>
+<p>import引用接口</p>
+<p>require加载模块</p>
+</li>
+<li><p>安装</p>
+<p>npm install webpack -g</p>
+<p>npm install webpack-cli -g</p>
+</li>
+</ul>
+<h5 id="10-1-使用webpack"><a href="#10-1-使用webpack" class="headerlink" title="10.1 使用webpack"></a>10.1 使用webpack</h5><ul>
+<li>1.创建项目</li>
+<li>2.创建一个名为modules的目录，用于存放JS模块等资源文件</li>
+<li>3.在modules目录下创建模块文件，如hello.js,用于编写js模块相关代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//暴露一个方法</span><br><span class="line">exports.sayHi = function() &#123;</span><br><span class="line">    document.write(&quot;&lt;h1&gt;hello&lt;/h1&gt;&quot;)</span><br><span class="line">&#125;</span><br><span class="line">exports.sayHi2 = function() &#123;</span><br><span class="line">    document.write(&quot;&lt;h1&gt;hello&lt;/h1&gt;&quot;)</span><br><span class="line">&#125;</span><br><span class="line">exports.sayHi3 = function() &#123;</span><br><span class="line">    document.write(&quot;&lt;h1&gt;hello&lt;/h1&gt;&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4.在modules目录下创建main.js入口文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var hello = require(&quot;./hello&quot;);</span><br><span class="line">hello.sayHi();</span><br><span class="line">hello.sayHi2()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>5.在根目录下创建 webpack.config.js 打包文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    //入口</span><br><span class="line">    entry: &#x27;./modules/main.js&#x27;,</span><br><span class="line">    //输出</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: &#x27;./js/bundle.js&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>6.输入打包命令 webpack</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/bomingxu/picgo/image/20210623140811.png" alt="image-20210623140811431"></p>
+<ul>
+<li>7.创建index.html文件。引入打包后的js</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--引入打包后的js--&gt;</span><br><span class="line">&lt;script src=&quot;dist/js/bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-vue路由-vue-router-（axios的安装同vue-router）"><a href="#11-vue路由-vue-router-（axios的安装同vue-router）" class="headerlink" title="11. vue路由 vue-router （axios的安装同vue-router）"></a>11. vue路由 vue-router （axios的安装同vue-router）</h2><ul>
+<li><p>安装(在项目位置)</p>
+<p>npm install vue-router —save-dev</p>
+</li>
+<li><p>引用vue-router</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import App from &#x27;./App&#x27;</span><br><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line">Vue.config.productionTip = false</span><br><span class="line">//显示声明vue-router</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">/* eslint-disable no-new */</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &#x27;&lt;App/&gt;&#x27;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>路由使用演示</li>
+</ul>
+<p>（1）创建两个组件，Main和Content</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;h1&gt;首页&lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;Main&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;h1&gt;内容页&lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;Content&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（2）创建一个路由文件夹router ,在其下面创建一个路由配置文件index.js</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line">//导入组件</span><br><span class="line">import Content from &quot;../components/Content&quot;;</span><br><span class="line">import Main from &quot;../components/Main&quot;;</span><br><span class="line">//显示声明</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">//配置导出路由</span><br><span class="line">export default new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      //路由路径</span><br><span class="line">      path: &#x27;/content&#x27;,</span><br><span class="line">      //名字，自己取(可省略)</span><br><span class="line">      name: &#x27;content&#x27;,</span><br><span class="line">      //跳转组件</span><br><span class="line">      component: Content</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      //路由路径</span><br><span class="line">      path: &#x27;/main&#x27;,</span><br><span class="line">      //名字，自己取(可省略)</span><br><span class="line">      name: &#x27;main&#x27;,</span><br><span class="line">      //跳转组件</span><br><span class="line">      component: Main</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>(3) main.js中配置路由</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// The Vue build version to load with the `import` command</span><br><span class="line">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import App from &#x27;./App&#x27;</span><br><span class="line">import router from &#x27;./router&#x27; //自动扫描里面的路由</span><br><span class="line">Vue.config.productionTip = false</span><br><span class="line">//显示声明vue-router</span><br><span class="line">Vue.use(router);</span><br><span class="line">/* eslint-disable no-new */</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  //配置路由</span><br><span class="line">  router,</span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &#x27;&lt;App/&gt;&#x27;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>(4) app.vue中展示不同的组件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h1&gt;vue-router&lt;/h1&gt;</span><br><span class="line">    &lt;router-link to=&quot;/main&quot;&gt;首页&lt;/router-link&gt;</span><br><span class="line">    &lt;router-link to=&quot;/content&quot;&gt;内容页&lt;/router-link&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;App&#x27;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: &#x27;Avenir&#x27;, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: #2c3e50;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="12-vue-elementUI"><a href="#12-vue-elementUI" class="headerlink" title="12. vue+elementUI"></a>12. vue+elementUI</h2><ul>
+<li><p>创建项目</p>
+<p>//初始化项目</p>
+<p>vue init webpack hello-vue</p>
+<p>//进入项目</p>
+<p>cd hello-vue</p>
+<p>//安装 vue-router</p>
+<p>npm install vue-router —save-dev</p>
+<p>//安装elementUI</p>
+<p>npm i element-ui -s</p>
+<p>//安装依赖</p>
+<p>npm install</p>
+<p>//启动测试</p>
+<p>npm run dev</p>
+</li>
+<li><p>登录页面 login.vue</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;login-container&quot;&gt;</span><br><span class="line">    &lt;el-form :model=&quot;ruleForm2&quot; :rules=&quot;rules2&quot;</span><br><span class="line">             status-icon</span><br><span class="line">             ref=&quot;ruleForm2&quot;</span><br><span class="line">             label-position=&quot;left&quot;</span><br><span class="line">             label-width=&quot;0px&quot;</span><br><span class="line">             class=&quot;demo-ruleForm login-page&quot;&gt;</span><br><span class="line">      &lt;h3 class=&quot;title&quot;&gt;系统登录&lt;/h3&gt;</span><br><span class="line">      &lt;el-form-item prop=&quot;username&quot;&gt;</span><br><span class="line">        &lt;el-input type=&quot;text&quot;</span><br><span class="line">                  v-model=&quot;ruleForm2.username&quot;</span><br><span class="line">                  auto-complete=&quot;off&quot;</span><br><span class="line">                  placeholder=&quot;用户名&quot;</span><br><span class="line">        &gt;&lt;/el-input&gt;</span><br><span class="line">      &lt;/el-form-item&gt;</span><br><span class="line">      &lt;el-form-item prop=&quot;password&quot;&gt;</span><br><span class="line">        &lt;el-input type=&quot;password&quot;</span><br><span class="line">                  v-model=&quot;ruleForm2.password&quot;</span><br><span class="line">                  auto-complete=&quot;off&quot;</span><br><span class="line">                  placeholder=&quot;密码&quot;</span><br><span class="line">        &gt;&lt;/el-input&gt;</span><br><span class="line">      &lt;/el-form-item&gt;</span><br><span class="line">      &lt;el-checkbox</span><br><span class="line">        v-model=&quot;checked&quot;</span><br><span class="line">        class=&quot;rememberme&quot;</span><br><span class="line">      &gt;记住密码&lt;/el-checkbox&gt;</span><br><span class="line">      &lt;el-form-item style=&quot;width:100%;&quot;&gt;</span><br><span class="line">        &lt;el-button type=&quot;primary&quot; style=&quot;width:100%;&quot; @click=&quot;handleSubmit&quot; :loading=&quot;logining&quot;&gt;登录&lt;/el-button&gt;</span><br><span class="line">      &lt;/el-form-item&gt;</span><br><span class="line">    &lt;/el-form&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                logining: false,</span><br><span class="line">                ruleForm2: &#123;</span><br><span class="line">                    username: &#x27;admin&#x27;,</span><br><span class="line">                    password: &#x27;123456&#x27;,</span><br><span class="line">                &#125;,</span><br><span class="line">                rules2: &#123;</span><br><span class="line">                    username: [&#123;required: true, message: &#x27;please enter your account&#x27;, trigger: &#x27;blur&#x27;&#125;],</span><br><span class="line">                    password: [&#123;required: true, message: &#x27;enter your password&#x27;, trigger: &#x27;blur&#x27;&#125;]</span><br><span class="line">                &#125;,</span><br><span class="line">                checked: false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            handleSubmit(event)&#123;</span><br><span class="line">                this.$refs.ruleForm2.validate((valid) =&gt; &#123;</span><br><span class="line">                    if(valid)&#123;</span><br><span class="line">                        this.logining = true;</span><br><span class="line">                        if(this.ruleForm2.username === &#x27;admin&#x27; &amp;&amp;</span><br><span class="line">                            this.ruleForm2.password === &#x27;123456&#x27;)&#123;</span><br><span class="line">                            this.logining = false;</span><br><span class="line">                            sessionStorage.setItem(&#x27;user&#x27;, this.ruleForm2.username);</span><br><span class="line">                            this.$router.push(&#123;name: &#x27;main&#x27;,params:&#123;username:this.ruleForm2.username&#125; &#125;);</span><br><span class="line">                        &#125;else&#123;</span><br><span class="line">                            this.logining = false;</span><br><span class="line">                            this.$alert(&#x27;username or password wrong!&#x27;, &#x27;info&#x27;, &#123;</span><br><span class="line">                                confirmButtonText: &#x27;ok&#x27;</span><br><span class="line">                            &#125;)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;else&#123;</span><br><span class="line">                        console.log(&#x27;error submit!&#x27;);</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .login-container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">  .login-page &#123;</span><br><span class="line">    -webkit-border-radius: 5px;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">    margin: 180px auto;</span><br><span class="line">    width: 350px;</span><br><span class="line">    padding: 35px 35px 15px;</span><br><span class="line">    background: #fff;</span><br><span class="line">    border: 1px solid #eaeaea;</span><br><span class="line">    box-shadow: 0 0 25px #cac6c6;</span><br><span class="line">  &#125;</span><br><span class="line">  label.el-checkbox.rememberme &#123;</span><br><span class="line">    margin: 0px 0px 15px;</span><br><span class="line">    text-align: left;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首页Main</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-container style=&quot;height: 500px; border: 1px solid #eee&quot;&gt;</span><br><span class="line">    &lt;el-aside width=&quot;200px&quot; style=&quot;background-color: rgb(238, 241, 246)&quot;&gt;</span><br><span class="line">      &lt;el-menu :default-openeds=&quot;[&#x27;1&#x27;, &#x27;3&#x27;]&quot;&gt;</span><br><span class="line">        &lt;el-submenu index=&quot;1&quot;&gt;</span><br><span class="line">          &lt;template slot=&quot;title&quot;&gt;用户管理&lt;/template&gt;</span><br><span class="line">          &lt;el-menu-item-group&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-1&quot;&gt;&lt;router-link to=&quot;/user/list&quot;&gt;用户列表&lt;/router-link&gt;&lt;/el-menu-item&gt;</span><br><span class="line">             &lt;!-- :to 绑定，name：路由器中的名字，params：传参 --&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;1-2&quot;&gt;&lt;router-link :to=&quot;&#123;name: &#x27;userProfile&#x27;,params: &#123; id: 123 &#125; &#125;&quot;&gt;个人信息&lt;/router-link&gt;&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">        &lt;/el-submenu&gt;</span><br><span class="line">        &lt;el-submenu index=&quot;2&quot;&gt;</span><br><span class="line">          &lt;template slot=&quot;title&quot;&gt;系统管理&lt;/template&gt;</span><br><span class="line">          &lt;el-menu-item-group&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;2-1&quot;&gt;系统查看&lt;/el-menu-item&gt;</span><br><span class="line">            &lt;el-menu-item index=&quot;2-2&quot;&gt;系统设置&lt;/el-menu-item&gt;</span><br><span class="line">          &lt;/el-menu-item-group&gt;</span><br><span class="line">        &lt;/el-submenu&gt;</span><br><span class="line">      &lt;/el-menu&gt;</span><br><span class="line">    &lt;/el-aside&gt;</span><br><span class="line">    &lt;el-container&gt;</span><br><span class="line">      &lt;el-header style=&quot;text-align: right; font-size: 12px&quot;&gt;</span><br><span class="line">        &#123; &#123;username&#125; &#125;</span><br><span class="line">      &lt;/el-header&gt;</span><br><span class="line">      &lt;el-main&gt;</span><br><span class="line">        &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">      &lt;/el-main&gt;</span><br><span class="line">    &lt;/el-container&gt;</span><br><span class="line">  &lt;/el-container&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .el-header &#123;</span><br><span class="line">    background-color: #B3C0D1;</span><br><span class="line">    color: #333;</span><br><span class="line">    line-height: 60px;</span><br><span class="line">  &#125;</span><br><span class="line">  .el-aside &#123;</span><br><span class="line">    color: #333;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        props: [&#x27;username&#x27;],</span><br><span class="line">        name: &quot;Main&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>404页面</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;404，你找的页面走丢了!&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .el-header &#123;</span><br><span class="line">    background-color: #B3C0D1;</span><br><span class="line">    color: #333;</span><br><span class="line">    line-height: 60px;</span><br><span class="line">  &#125;</span><br><span class="line">  .el-aside &#123;</span><br><span class="line">    color: #333;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;NotFound&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户列表页面 user/UserList</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;h1&gt;用户列表 &lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;UserList&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户个人信息页面 user/UserProfile</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;h1&gt;用户个人信息&#123; &#123;id&#125; &#125;&lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        props: [&#x27;id&#x27;],</span><br><span class="line">        name: &quot;UserProfile&quot;,</span><br><span class="line">        //路由钩子</span><br><span class="line">        beforeRouteEnter:(to, from, next)=&gt;&#123;</span><br><span class="line">            console.log(&quot;进入路由之前&quot;);</span><br><span class="line">            next(vm=&gt;&#123;</span><br><span class="line">                vm.getData()</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        //路由钩子</span><br><span class="line">        beforeRouteLeave:(to, from, next) =&gt; &#123;</span><br><span class="line">            console.log(&quot;离开路由之前&quot;);</span><br><span class="line">            next();</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            //模拟获取后台数据</span><br><span class="line">            getData:function () &#123;</span><br><span class="line">                this.axios(&#123;</span><br><span class="line">                    method: &#x27;get&#x27;,</span><br><span class="line">                    url: &#x27;http://localhost:8080/static/mock/data.json&#x27;</span><br><span class="line">                &#125;).then(function (response)&#123;</span><br><span class="line">                    console.log(response.data);</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>路由 index.js</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;;</span><br><span class="line">import VueRouter from &#x27;vue-router&#x27;;</span><br><span class="line">import Main from &quot;../components/Main&quot;;</span><br><span class="line">import Login from &quot;../components/Login&quot;</span><br><span class="line">import UserList from &quot;../components/user/UserList&quot;;</span><br><span class="line">import UserProfile from &quot;../components/user/UserProfile&quot;;</span><br><span class="line">import NotFound from &quot;../components/NotFound&quot;;</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">export default new VueRouter(&#123;</span><br><span class="line">  mode: &#x27;history&#x27;,//去掉url中的/#/</span><br><span class="line">  routes:[</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#x27;/main/:username&#x27;,</span><br><span class="line">      name: &#x27;main&#x27;,</span><br><span class="line">      component: Main,</span><br><span class="line">      props: true,</span><br><span class="line">      children: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#x27;/user/list&#x27;,</span><br><span class="line">          component: UserList,</span><br><span class="line">          props: true</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#x27;/user/profile/:id&#x27;,//id为参数 </span><br><span class="line">          name: &#x27;userProfile&#x27;,</span><br><span class="line">          component: UserProfile,</span><br><span class="line">          props: true</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#x27;/login&#x27;,</span><br><span class="line">      name: &#x27;login&#x27;,</span><br><span class="line">      component: Login</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#x27;*&#x27;,</span><br><span class="line">      component: NotFound</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>main.js 代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// The Vue build version to load with the `import` command</span><br><span class="line">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import ElementUI from &#x27;element-ui&#x27;;</span><br><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;;</span><br><span class="line">import App from &#x27;./App&#x27;</span><br><span class="line">import router from &#x27;./router&#x27;</span><br><span class="line">//需要先安装axios  npm install axios</span><br><span class="line">import axios from &#x27;axios&#x27;</span><br><span class="line">//需先安装vue-axios npm install --save axios vue-axios</span><br><span class="line">import VueAxios from &quot;vue-axios&quot;;</span><br><span class="line">Vue.use(VueAxios, axios)</span><br><span class="line">Vue.use(router);</span><br><span class="line">Vue.use(ElementUI);</span><br><span class="line">Vue.config.productionTip = false</span><br><span class="line">/* eslint-disable no-new */</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  router,</span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &#x27;&lt;App/&gt;&#x27;,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>模拟数据 data.json static/mock/data.json</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;  &quot;name&quot;: &quot;郑文杰&quot;,  &quot;url&quot;: &quot;www.baidu.com&quot;,  &quot;page&quot;: 1,  &quot;isNonProfit&quot;: true,  &quot;address&quot;: &#123;    &quot;street&quot;: &quot;含光门&quot;,    &quot;city&quot;: &quot;陕西西安&quot;,    &quot;country&quot;: &quot;中国&quot;  &#125;,  &quot;links&quot;:[&#123;    &quot;name&quot;: &quot;bilibili&quot;,    &quot;url&quot;: &quot;https://space.bilibili.com/95256449&quot;  &#125;,    &#123;      &quot;name&quot;: &quot;狂神说java&quot;,      &quot;url&quot;: &quot;https://blog.kuanngstudy.com&quot;    &#125;,    &#123;      &quot;name&quot;: &quot;百度&quot;,      &quot;url&quot;: &quot;https://www.baidu.com/&quot;    &#125;  ]&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>App.vue</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;  &lt;div id=&quot;app&quot;&gt;      &lt;!--显示路由的页面--&gt;    &lt;router-view&gt;&lt;/router-view&gt;  &lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default &#123;  name: &#x27;App&#x27;,  components: &#123;  &#125;&#125;&lt;/script&gt;&lt;style&gt;#app &#123;  font-family: &#x27;Avenir&#x27;, Helvetica, Arial, sans-serif;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  text-align: center;  color: #2c3e50;  margin-top: 60px;&#125;&lt;/style&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>VUE</category>
+      </categories>
+      <tags>
+        <tag>VUE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring5基础</title>
     <url>/2021/07/12/spring5%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="spring5基础"><a href="#spring5基础" class="headerlink" title="spring5基础"></a>spring5基础</h1><h2 id="Spring——IOC（控制反转）"><a href="#Spring——IOC（控制反转）" class="headerlink" title="Spring——IOC（控制反转）"></a>Spring——IOC（控制反转）</h2><h3 id="一、IOC容器"><a href="#一、IOC容器" class="headerlink" title="一、IOC容器"></a>一、IOC容器</h3><h3 id="1、什么是IOC（控制反转）"><a href="#1、什么是IOC（控制反转）" class="headerlink" title="1、什么是IOC（控制反转）"></a>1、什么是IOC（控制反转）</h3><p> a）把对象创建和对象之间的调用过程，交给Spring进行管理</p>

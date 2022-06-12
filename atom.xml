@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-06-12T13:00:08.391Z</updated>
+  <updated>2022-06-12T13:01:08.802Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,16 +21,12 @@
     <link href="http://example.com/2022/06/12/Post5/"/>
     <id>http://example.com/2022/06/12/Post5/</id>
     <published>2022-06-12T11:23:33.000Z</published>
-    <updated>2022-06-12T13:00:08.391Z</updated>
+    <updated>2022-06-12T13:01:08.802Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Mybatis简介&quot;&gt;&lt;a href=&quot;#Mybatis简介&quot; class=&quot;headerlink&quot; title=&quot;Mybatis简介&quot;&gt;&lt;/a&gt;Mybatis简介&lt;/h1&gt;&lt;h2 id=&quot;MyBatis历史&quot;&gt;&lt;a href=&quot;#MyBatis历史&quot;</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;Mybatis简介&quot;&gt;&lt;a href=&quot;#Mybatis简介&quot; class=&quot;headerlink&quot; title=&quot;Mybatis简介&quot;&gt;&lt;/a&gt;Mybatis简介&lt;/h1&gt;&lt;h2 id=&quot;MyBatis历史&quot;&gt;&lt;a href=&quot;#MyBatis历史&quot; class=&quot;headerlink&quot; title=&quot;MyBatis历史&quot;&gt;&lt;/a&gt;MyBatis历史&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;   MyBatis最初是Apache的一个开源项目iBatis, 2010年6月这个项目由Apache Software Foundation迁移到了Google Code。随着开发团队转投Google Code旗下，iBatis3.x正式更名为MyBatis。代码于2013年11月迁移到Github&lt;/li&gt;
+&lt;li&gt;   iBatis一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBatis提供的持久层框架包括SQL Maps和Data Access Objects（DAO）</summary>
     
     
     

@@ -344,17 +344,14 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2021/12/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<p>数据库知识点</p>
-<span id="more"></span>
-
-
-<ul>
+    <title>数据库知识点</title>
+    <url>/2022/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<ul>
 <li>事务的四大特性？</li>
 <li>数据库的三大范式</li>
 <li>事务隔离级别有哪些？</li>
-<li>索引<ul>
+<li>索引<span id="more"></span>
+<ul>
 <li>什么是索引？</li>
 <li>索引的优缺点？</li>
 <li>索引的作用？</li>

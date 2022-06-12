@@ -3,14 +3,14 @@
   <entry>
     <title>Post5</title>
     <url>/2022/06/12/Post5/</url>
-    <content><![CDATA[<p>##进入站点根目录<br>cd /usr/local/src/hexo/hanyubolg/</p>
-<p>##删除git提交内容文件夹<br>vim _config.yml</p>
-<p>##修改<br>deploy:</p>
-<p>type: git</p>
-<p>repo: <a href="https://github.com/yourname/yourname.github.io.git">https://github.com/yourname/yourname.github.io.git</a> -&gt; <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;</a>:a956551943/weixiaohui.github.io.git</p>
-<p>branch: master</p>
-<p>##最后<br>hexo clean<br>hexo g<br>hexo d</p>
-]]></content>
+    <content><![CDATA[<h1 id="spring5基础"><a href="#spring5基础" class="headerlink" title="spring5基础"></a>spring5基础</h1><h2 id="Spring——IOC（控制反转）"><a href="#Spring——IOC（控制反转）" class="headerlink" title="Spring——IOC（控制反转）"></a>Spring——IOC（控制反转）</h2><h3 id="一、IOC容器"><a href="#一、IOC容器" class="headerlink" title="一、IOC容器"></a>一、IOC容器</h3><h3 id="1、什么是IOC（控制反转）"><a href="#1、什么是IOC（控制反转）" class="headerlink" title="1、什么是IOC（控制反转）"></a>1、什么是IOC（控制反转）</h3><p> a）把对象创建和对象之间的调用过程，交给Spring进行管理</p>
+<p> b）使用IOC目的：为了降低耦合度<br> <span id="more"></span></p>
+<h3 id="2、IOC底层"><a href="#2、IOC底层" class="headerlink" title="2、IOC底层"></a>2、IOC底层</h3><p> a）xml解析、工厂模式、反射</p>
+<p> 3、Spring提供的IOC容器实现的两种方式（两个接口）</p>
+<p> a）BeanFactory接口：IOC容器基本实现是Spring内部接口的使用接口，不提供给开发人员进行使用（加载配置文件时候不会创建对象，在获取对象时才会创建对象。）</p>
+<p> b）ApplicationContext接口：BeanFactory接口的子接口，提供更多更强大的功能，提供给开发人员使用（加载配置文件时候就会把在配置文件对象进行创建）推荐使用！</p>
+<p> 4、ApplicationContext接口的实现类（具体根据API文档查看☺）</p>
+<h3 id="二、IOC容器-Bean管理"><a href="#二、IOC容器-Bean管理" class="headerlink" title="二、IOC容器-Bean管理"></a>二、IOC容器-Bean管理</h3>]]></content>
   </entry>
   <entry>
     <title></title>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="什么是设计模式？参考来源于 鱼皮 https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;11HvyNLC4_GPICVG0BufDA 设计模式是我们开发软件时针对常见问题的 通用 解决方案，也是前辈们在写代码时不断摸索总结出来的好方法。 可以理解为打游戏的攻略，就是我们遇到同一类的对手时，怎么走位、怎么放技能之类的。 设计模式有什么用？设计模式最直接的作用就是 减少烂代码、让项目代码更好维护 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://example.com/2022/08/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="LAYCHOUblog">
+<meta property="og:description" content="什么是设计模式？参考来源于 鱼皮 https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;11HvyNLC4_GPICVG0BufDA 设计模式是我们开发软件时针对常见问题的 通用 解决方案，也是前辈们在写代码时不断摸索总结出来的好方法。 可以理解为打游戏的攻略，就是我们遇到同一类的对手时，怎么走位、怎么放技能之类的。 设计模式有什么用？设计模式最直接的作用就是 减少烂代码、让项目代码更好维护 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUGiaj4F3X65ibqWtvvr8ewltMWCHhOY4UaWONzsRmCMXclP2Z4ibSU29OA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUGD8HznaJGEEHPPnYINalq6ZCnkvGJu5JbhmyhicmYu3LMibJzvaibjBMw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUoEghice0Xw5JK6pzgtSGeDMia37vWTawESNLBTibAbQp5sjAEHBxF3rGQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUx4hOjIG7YuicA90Qf3EfAfuwOdicw4hZ9LibxavC8tgfmK4aCcLSiayqTQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUUAtlj0D4CfxNo6iavbExxzkAJefNFLiaJBlQfPRKUMtybcNwr1eRGYBg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="article:published_time" content="2022-08-12T01:22:04.000Z">
+<meta property="article:modified_time" content="2022-09-23T12:28:31.834Z">
+<meta property="article:author" content="LAYCHOU">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUGiaj4F3X65ibqWtvvr8ewltMWCHhOY4UaWONzsRmCMXclP2Z4ibSU29OA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+
+
+<link rel="canonical" href="http://example.com/2022/08/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/08/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/","path":"2022/08/12/设计模式/","title":"设计模式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>设计模式 | LAYCHOUblog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="LAYCHOUblog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">LAYCHOUblog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是设计模式？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">设计模式有什么用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">为什么要学设计模式？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%AD%A6%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">什么时候学？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E5%AD%A6%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">要学什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%8E%9F%E5%88%99"><span class="nav-number">5.1.</span> <span class="nav-text">1. 软件开发原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AD%A6%E4%B9%A0%E4%B8%BB%E6%B5%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.2.</span> <span class="nav-text">2. 学习主流设计模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF"><span class="nav-number"></span> <span class="nav-text">设计模式学习路线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">一、基础学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">二、编码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">三、项目实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%90%9C%E7%B4%A2%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">1. 搜索式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8E%A2%E7%B4%A2%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">2. 探索式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">面试考点</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LAYCHOU"
+      src="/images/mypic.jpg">
+  <p class="site-author-name" itemprop="name">LAYCHOU</p>
+  <div class="site-description" itemprop="description">zyc study blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zyczzco" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zyczzco" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1007611579@qq.com" title="E-Mail → 1007611579@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.jpg">
+      <meta itemprop="name" content="LAYCHOU">
+      <meta itemprop="description" content="zyc study blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LAYCHOUblog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          设计模式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-12 09:22:04" itemprop="dateCreated datePublished" datetime="2022-08-12T09:22:04+08:00">2022-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-23 20:28:31" itemprop="dateModified" datetime="2022-09-23T20:28:31+08:00">2022-09-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="什么是设计模式？"><a href="#什么是设计模式？" class="headerlink" title="什么是设计模式？"></a><strong>什么是设计模式？</strong></h3><p>参考来源于 鱼皮 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/11HvyNLC4_GPICVG0BufDA">https://mp.weixin.qq.com/s/11HvyNLC4_GPICVG0BufDA</a></p>
+<p>设计模式是我们开发软件时针对常见问题的 <strong>通用</strong> 解决方案，也是前辈们在写代码时不断摸索总结出来的好方法。</p>
+<p>可以理解为打游戏的攻略，就是我们遇到同一类的对手时，怎么走位、怎么放技能之类的。</p>
+<h3 id="设计模式有什么用？"><a href="#设计模式有什么用？" class="headerlink" title="设计模式有什么用？"></a><strong>设计模式有什么用？</strong></h3><p>设计模式最直接的作用就是 <strong>减少烂代码、让项目代码更好维护</strong> 。</p>
+<p>举个栗子，如果没学过设计模式，可能随着产品不断加需求、改需求，你的代码会充满大量的 if else，新同事来了呢，也不敢动前人代码，只能再去补充 if else，于是屎山越堆越高。</p>
+<p>而使用设计模式后，你可以把每段逻辑单独封装和维护，大家协作开发也会更高效。</p>
+<h3 id="为什么要学设计模式？"><a href="#为什么要学设计模式？" class="headerlink" title="为什么要学设计模式？"></a><strong>为什么要学设计模式？</strong></h3><p>学好设计模式，不仅能让我们写出更好维护、性能更高的代码，还能开拓我们的思维，在遇到问题时能想到更多的解决方案。</p>
+<p>因此设计模式也是软件开发岗面试的重点，想进大厂的同学一定要学习它。</p>
+<p>此外，很多知名项目都用到了大量的设计模式，比如 Spring、MyBatis 等。如果不学习它，可能你天天写代码都是 CRUD、读别人的源码会非常吃力。</p>
+<p>所以建议开发岗的朋友们都要认真学习设计模式。</p>
+<h3 id="什么时候学？"><a href="#什么时候学？" class="headerlink" title="什么时候学？"></a><strong>什么时候学？</strong></h3><p>我建议大家在学过一门编程语言、并且能够使用开发框架去完成项目之后，再去学设计模式。如果你写代码的熟练度还不够的话，直接去学设计模式会比较吃力，可能也无法理解用设计模式的好处。</p>
+<p>那如果你学前端的话，我建议你先把界面开发、JS 语法、组件库和 Vue / React 之类的框架运用熟练，有空了再把设计模式作为进阶知识来学习就好。</p>
+<h3 id="要学什么？"><a href="#要学什么？" class="headerlink" title="要学什么？"></a><strong>要学什么？</strong></h3><p>设计模式的学习主要分为两部分：</p>
+<h4 id="1-软件开发原则"><a href="#1-软件开发原则" class="headerlink" title="1. 软件开发原则"></a>1. 软件开发原则</h4><p>所有的设计模式基本都是建立以下几个软件开发原则的基础上。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUGiaj4F3X65ibqWtvvr8ewltMWCHhOY4UaWONzsRmCMXclP2Z4ibSU29OA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>比如开闭原则，就是建议我们把模块设计的好扩展一些，每次新增功能只需要加代码、而不用改老代码。</p>
+<h4 id="2-学习主流设计模式"><a href="#2-学习主流设计模式" class="headerlink" title="2. 学习主流设计模式"></a>2. 学习主流设计模式</h4><p>主流的设计模式共有以下 23 种：</p>
+<blockquote>
+<p>注意，不是说设计模式只有 23 种！</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUGD8HznaJGEEHPPnYINalq6ZCnkvGJu5JbhmyhicmYu3LMibJzvaibjBMw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">设计模式学习路线 by 程序员鱼皮</p>
+<p>其中单例、工厂方法、建造者、适配器、装饰器、代理、策略、责任链、观察者、迭代器模式是重点，我自己工作中经常用到这些、也总能在框架源码中见到它们。这些设计模式的特色也比较鲜明、相对比较好理解。</p>
+<p>尤其是单例模式，是重点中的重点！它有很多种不同的实现方式，都要了解。我用的最多的应该是饿汉式还有双检锁模式。</p>
+<h2 id="设计模式学习路线"><a href="#设计模式学习路线" class="headerlink" title="设计模式学习路线"></a>设计模式学习路线</h2><p>建议大家按照以下 3 个阶段来学习：</p>
+<h3 id="一、基础学习"><a href="#一、基础学习" class="headerlink" title="一、基础学习"></a><strong>一、基础学习</strong></h3><p>目标：从上面提到的重点开始依次了解每一种设计模式的概念、作用、应用场景、特点、类和对象的关系，能够对设计模式有个基础的印象。</p>
+<p>学习方式有很多种：</p>
+<ul>
+<li>喜欢看视频的同学挑个高播放量的、讲师口音能接受的教程看就好了；</li>
+<li>喜欢读书的同学可以看《图解设计模式》、《大话设计模式》，个人感觉这两本书都还不错，我自己是看前者入门的。</li>
+<li>想快速上手的同学可以直接看菜鸟教程的文档，每个设计模式都有讲解和代码示例，还是比较推荐的。像我有的时候忘了某个冷门的设计模式，也是靠这个文档快速补回来。</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUoEghice0Xw5JK6pzgtSGeDMia37vWTawESNLBTibAbQp5sjAEHBxF3rGQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>这里建议大家在学设计模式的时候多和实际生活结合，会更好理解一些。</p>
+<p>比如适配器模式可以理解为用一个转接头连接两根线；代理模式理解为你找了个代购帮你去买东西；责任链模式理解为公司出了问题，员工依次甩锅。</p>
+<h3 id="二、编码实现"><a href="#二、编码实现" class="headerlink" title="二、编码实现"></a><strong>二、编码实现</strong></h3><p>这个阶段的目标是：用你熟悉的编程语言来写代码实现每个设计模式，要能够独立（不借助任何资料）从 0 写出完整代码，这样才算是学会了。</p>
+<p>如果刚开始大家不知道设计模式怎么应用的话，我建议去看一些示例代码。</p>
+<p>可以直接在 GitHub 搜索关键词 <code>Design Pattern</code> 或 <code>设计模式</code> ，就能搜出来一大堆不同语言的代码了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUx4hOjIG7YuicA90Qf3EfAfuwOdicw4hZ9LibxavC8tgfmK4aCcLSiayqTQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>那我建议大家把自己写过的代码保存好，可以打造一个自己的设计模式代码库，写在简历上也是能加分的。</p>
+<h3 id="三、项目实战"><a href="#三、项目实战" class="headerlink" title="三、项目实战"></a><strong>三、项目实战</strong></h3><p>本阶段的目标：能够根据某个场景主动选出合适的设计模式来优化代码，而不是说别人告诉你这里能用设计模式，你才想起来去用。这就是架构师和拧螺丝的区别。</p>
+<p>这里给大家两个学习方法吧：</p>
+<h4 id="1-搜索式"><a href="#1-搜索式" class="headerlink" title="1. 搜索式"></a>1. 搜索式</h4><p>花时间到网上搜设计模式在知名框架中的应用，比如 Spring：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/mngWTkJEOYLshyBE3PzUib850OYI6tNOUUAtlj0D4CfxNo6iavbExxzkAJefNFLiaJBlQfPRKUMtybcNwr1eRGYBg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>网上的文章很多，我就不一一列举了。比较建议大家在面试前这么干，可以快速积累。</p>
+<h4 id="2-探索式"><a href="#2-探索式" class="headerlink" title="2. 探索式"></a>2. 探索式</h4><p>就是在你写代码的过程中，一旦遇到重复代码，就问一下自己：我能不能用上某个设计模式呢？合适的话就使用设计模式。次数多了，你就有经验了。</p>
+<p>此外，我自己在写代码时，特别喜欢点进源码看一看，一般是能够通过文件命名来快速判断出它是否使用了设计模式的，然后你就可以进一步读源码来学习，帮助我积累了很多知识。</p>
+<p>但我们也要注意，设计模式虽然好用，但它不是银弹，不要为了用而用。</p>
+<p>比如非要把一句简单的 if else 搞成策略模式，过分使用设计模式只会徒增系统的复杂度。</p>
+<h3 id="面试考点"><a href="#面试考点" class="headerlink" title="面试考点"></a><strong>面试考点</strong></h3><p>面试时对设计模式的考察可能比较多元，主要有理论、实践、源码等考法：</p>
+<p>理论就是问你不同设计模式的概念、优缺点、应用场景，设计模式之间的区别等等。</p>
+<p>实践就是让你手写某个设计模式。最常考的就是单例模式，我就被考过，当时还让我写出几种不同的单例模式实现。</p>
+<p>源码就是说问你某个框架用了哪些设计模式，或者某个设计模式在哪些框架中应用过。如果我是面试官，大概率会这么考，因为能看出候选人的知识储备。</p>
+<p>所以要想在设计模式这块不吃瘪，除了背八股文外，还是要保证能手写出常考的设计模式，并且多去了解一下它在知名项目中的应用。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A6%81%E7%82%B9/" rel="prev" title="设计模式学习">
+                  <i class="fa fa-chevron-left"></i> 设计模式学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LAYCHOU</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">216k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:16</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  <!-- ҳ����С���� -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

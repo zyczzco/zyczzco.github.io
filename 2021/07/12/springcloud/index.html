@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="SpringCloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springcloud微服务">
+<meta property="og:url" content="http://example.com/2021/07/12/springcloud/index.html">
+<meta property="og:site_name" content="LAYCHOUblog">
+<meta property="og:description" content="SpringCloud">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/12.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/11.png">
+<meta property="og:image" content="e:/大三学期/JAVA/Springcloud/springcloud微服务/14.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/15.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/16.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/2.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/4.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/1.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/5.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/3.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/23.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/24.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/22.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/21.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/25.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/26.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/27.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/221.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/222.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/223.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/224.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/225.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/211.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/212.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/28.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/31.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/32.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/41.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/42.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/43.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923200504398.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/44.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/57.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/58.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/51.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/52.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/56.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/55.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/54.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/53.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/593.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/591.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/59.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/595.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/596.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/594.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/592.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/61.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/62.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/64.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/63.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-server.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-userservice.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-stockservice.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-orderservice.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/71.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/81.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/82.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/83.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/84.png">
+<meta property="article:published_time" content="2021-07-12T01:21:04.000Z">
+<meta property="article:modified_time" content="2022-09-23T12:07:20.704Z">
+<meta property="article:author" content="LAYCHOU">
+<meta property="article:tag" content="springcloude">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/12.png">
+
+
+<link rel="canonical" href="http://example.com/2021/07/12/springcloud/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/07/12/springcloud/","path":"2021/07/12/springcloud/","title":"springcloud微服务"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>springcloud微服务 | LAYCHOUblog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="LAYCHOUblog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">LAYCHOUblog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringCloud"><span class="nav-number">1.</span> <span class="nav-text">SpringCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83-%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">一、注册中心&#x2F;配置管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nacos"><span class="nav-number">1.1.1.</span> <span class="nav-text">nacos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eureka"><span class="nav-number">1.1.2.</span> <span class="nav-text">Eureka</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consul"><span class="nav-number">1.1.3.</span> <span class="nav-text">Consul</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-cloud-concul-producer"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">spring-cloud-concul-producer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-cloud-concul-consumer"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">spring-cloud-concul-consumer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-cloud-consul-config"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">spring-cloud-consul-config</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3"><span class="nav-number">1.2.</span> <span class="nav-text">二、微服务网关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zuul"><span class="nav-number">1.2.1.</span> <span class="nav-text">zuul</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-cloud-gateway"><span class="nav-number">1.2.2.</span> <span class="nav-text">spring cloud gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-predicate%E8%B7%AF%E7%94%B1%E6%96%AD%E8%A8%80"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1.predicate路由断言</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#After-Route-Predicate-Factory"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">After Route Predicate Factory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Header-Route-Predicate-Factory"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">Header Route Predicate Factory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cookie-Route-Predicate-Factory"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">Cookie Route Predicate Factory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Host-Route-Predicate-Factory"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text">Host Route Predicate Factory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.2.2.1.5.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Method-Route-Predicate-Factory"><span class="nav-number">1.2.2.1.6.</span> <span class="nav-text">Method Route Predicate Factory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Path-Route-Predicate-Factory"><span class="nav-number">1.2.2.1.7.</span> <span class="nav-text">Path Route Predicate Factory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Query-Route-Predicate-Factory"><span class="nav-number">1.2.2.1.8.</span> <span class="nav-text">Query Route Predicate Factory</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-gateway-%E4%B9%8Bfilters"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.gateway 之filters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gateway-filter"><span class="nav-number">1.2.2.2.1.</span> <span class="nav-text">gateway filter</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AddRequestHeader-GatewayFilter-Factory"><span class="nav-number">1.2.2.2.1.1.</span> <span class="nav-text">AddRequestHeader GatewayFilter Factory</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.2.2.2.1.2.</span> <span class="nav-text">自定义过滤器</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#global-filter"><span class="nav-number">1.2.2.2.2.</span> <span class="nav-text">global filter</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Ribbon%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">1.3.</span> <span class="nav-text">三、Ribbon负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.1.</span> <span class="nav-text">负载均衡算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%B6-%E8%BD%AE%E8%AF%A2%E6%B3%95-Round-Robin"><span class="nav-number">1.3.2.</span> <span class="nav-text"> 轮询法(Round Robin)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%B6-%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2%E6%B3%95-Weight-Round-Robin"><span class="nav-number">1.3.3.</span> <span class="nav-text"> 加权轮询法(Weight Round Robin)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%B6-%E9%9A%8F%E6%9C%BA%E6%B3%95-Random"><span class="nav-number">1.3.4.</span> <span class="nav-text"> 随机法(Random)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%B6-%E5%8A%A0%E6%9D%83%E9%9A%8F%E6%9C%BA%E6%B3%95-Weight-Random"><span class="nav-number">1.3.5.</span> <span class="nav-text"> 加权随机法(Weight Random)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%B6-%E6%BA%90%E5%9C%B0%E5%9D%80%E5%93%88%E5%B8%8C%E6%B3%95-Hash"><span class="nav-number">1.3.6.</span> <span class="nav-text"> 源地址哈希法(Hash)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%B6-%E6%9C%80%E5%B0%8F%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%B3%95-Least-Connections"><span class="nav-number">1.3.7.</span> <span class="nav-text"> 最小连接数法(Least Connections)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81OpenFeign%E5%A3%B0%E6%98%8E%E5%BC%8F%E8%B0%83%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">四、OpenFeign声明式调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">1、概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BD%9C%E7%94%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">2、作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-openFeign-%E7%9A%84%E4%BC%A0%E5%8F%82%EF%BC%9A"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.openFeign 的传参：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E6%A1%88%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="nav-number">1.4.4.</span> <span class="nav-text">4、案例说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81%E3%80%81%E9%99%8D%E7%BA%A7"><span class="nav-number">1.5.</span> <span class="nav-text">五、熔断、限流、降级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-cloud-Hystrix"><span class="nav-number">1.5.1.</span> <span class="nav-text">spring cloud Hystrix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hystrix-demo"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">Hystrix-demo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hystrix%E7%9B%91%E6%B5%8B"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">Hystrix监测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Turbine%E9%9B%86%E7%BE%A4%E7%9B%91%E6%B5%8B"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">Turbine集群监测</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81Sring-cloud-bus%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF"><span class="nav-number">1.6.</span> <span class="nav-text">六、Sring cloud bus消息总线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka"><span class="nav-number">1.6.1.</span> <span class="nav-text">kafka</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1Seata"><span class="nav-number">1.7.</span> <span class="nav-text">七、分布式事务Seata</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%9C%8D%E5%8A%A1%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AASleuth"><span class="nav-number">1.8.</span> <span class="nav-text">八、服务链路追踪Sleuth</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LAYCHOU"
+      src="/images/mypic.jpg">
+  <p class="site-author-name" itemprop="name">LAYCHOU</p>
+  <div class="site-description" itemprop="description">zyc study blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zyczzco" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zyczzco" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1007611579@qq.com" title="E-Mail → 1007611579@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/12/springcloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.jpg">
+      <meta itemprop="name" content="LAYCHOU">
+      <meta itemprop="description" content="zyc study blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LAYCHOUblog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          springcloud微服务
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-12 09:21:04" itemprop="dateCreated datePublished" datetime="2021-07-12T09:21:04+08:00">2021-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-23 20:07:20" itemprop="dateModified" datetime="2022-09-23T20:07:20+08:00">2022-09-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>19k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>17 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h1><span id="more"></span>
+
+<p>参考学习文件</p>
+<p><strong>JAVA\Springcloud\spring-cloud-book-v1-master</strong></p>
+<h2 id="一、注册中心-配置管理"><a href="#一、注册中心-配置管理" class="headerlink" title="一、注册中心/配置管理"></a>一、注册中心/配置管理</h2><h3 id="nacos"><a href="#nacos" class="headerlink" title="nacos"></a>nacos</h3><p>启动nacos</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startup.cmd -m standalone</span><br></pre></td></tr></table></figure>
+
+<p>ndalone</p>
+<p>nacos-springcloud-config</p>
+<p>nacos配置管理</p>
+<img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/12.png" alt="12" style="zoom:50%;" />
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/11.png" alt="11"></p>
+<p>nacos服务注册</p>
+<p>nacos-springcloud-discovery</p>
+<p>运行创建服务，可看见nacos面板显示服务example</p>
+<p><img src="E:\大三学期\JAVA\Springcloud\springcloud微服务\14.png" alt="14"></p>
+<p>nacos-springcloud-discovery-01</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/15.png" alt="15"></p>
+<p>nacos-springcloud-discovery-02</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/16.png" alt="16"></p>
+<h3 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h3><h3 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h3><h4 id="spring-cloud-concul-producer"><a href="#spring-cloud-concul-producer" class="headerlink" title="spring-cloud-concul-producer"></a>spring-cloud-concul-producer</h4><p>程序运行，consul服务发现并配置</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/2.png" alt="2"></p>
+<h4 id="spring-cloud-concul-consumer"><a href="#spring-cloud-concul-consumer" class="headerlink" title="spring-cloud-concul-consumer"></a>spring-cloud-concul-consumer</h4><p>消费者获取生产者发送的消息</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/4.png" alt="4"></p>
+<p>消费者获取生产者详细信息</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/1.png" alt="1"></p>
+<p>消费者获取生产者信息 发现服务</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/5.png" alt="5"></p>
+<p>当前运行的服务</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/3.png" alt="3"></p>
+<h4 id="spring-cloud-consul-config"><a href="#spring-cloud-consul-config" class="headerlink" title="spring-cloud-consul-config"></a>spring-cloud-consul-config</h4><h2 id="二、微服务网关"><a href="#二、微服务网关" class="headerlink" title="二、微服务网关"></a>二、微服务网关</h2><h3 id="zuul"><a href="#zuul" class="headerlink" title="zuul"></a>zuul</h3><p>zuul-service</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/23.png" alt="23"></p>
+<p>同时启动eureka、zuul-provider、zuul-consumer</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/24.png" alt="24"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/22.png" alt="22"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/21.png" alt="21"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/25.png" alt="25"></p>
+<h3 id="spring-cloud-gateway"><a href="#spring-cloud-gateway" class="headerlink" title="spring cloud gateway"></a>spring cloud gateway</h3><ul>
+<li>协议转换，路由转发</li>
+<li>流量聚合，对流量进行监控，日志输出</li>
+<li>作为整个系统的前端工程，对流量进行控制，有限流的作用</li>
+<li>作为系统的前端边界，外部流量只能通过网关才能访问系统</li>
+<li>可以在网关层做权限的判断</li>
+<li>可以在网关层做缓存</li>
+</ul>
+<p>spring-cloud-gateway-01</p>
+<p>访问9021/user/1的地址，请求被路由转发到8201/user/1</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/26.png" alt="26"></p>
+<p>访问9021/user2/getUser的地址，请求被路由转发到8201/user2/getUser</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/27.png" alt="27"></p>
+<h4 id="1-predicate路由断言"><a href="#1-predicate路由断言" class="headerlink" title="1.predicate路由断言"></a>1.predicate路由断言</h4><h5 id="After-Route-Predicate-Factory"><a href="#After-Route-Predicate-Factory" class="headerlink" title="After Route Predicate Factory"></a>After Route Predicate Factory</h5><p>AfterRoutePredicateFactory，可配置一个时间，当请求的时间在配置时间之后，才交给 router去处理。否则则报错，不通过路由。</p>
+<p>在工程的application.yml配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8081</span><br><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: after_route</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: after_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - After=2017-01-20T17:42:47.789-07:00[America/Denver]</span><br><span class="line">  profiles: after_route</span><br></pre></td></tr></table></figure>
+
+<p>在上面的配置文件中，配置了服务的端口为8081，配置spring.profiles.active:after_route指定了程序的spring的启动文件为after_route文件。在application.yml再建一个配置文件，语法是三个横线，在此配置文件中通过spring.profiles来配置文件名，和spring.profiles.active一致，然后配置spring cloud gateway 相关的配置，id标签配置的是router的id，每个router都需要一个唯一的id，uri配置的是将请求路由到哪里，本案例全部路由到<a target="_blank" rel="noopener" href="http://httpbin.org/get%E3%80%82">http://httpbin.org:80/get。</a></p>
+<p>predicates： After=2017-01-20T17:42:47.789-07:00[America/Denver] 会被解析成PredicateDefinition对象 （name =After ，args= 2017-01-20T17:42:47.789-07:00[America/Denver]）。在这里需要注意的是predicates的After这个配置，遵循的契约大于配置的思想，它实际被AfterRoutePredicateFactory这个类所处理，这个After就是指定了它的Gateway web handler类为AfterRoutePredicateFactory，同理，其他类型的predicate也遵循这个规则。</p>
+<p>当请求的时间在这个配置的时间之后，请求会被路由到<a target="_blank" rel="noopener" href="http://httpbin.org/get%E3%80%82">http://httpbin.org:80/get。</a></p>
+<p>启动工程，在浏览器上访问<a target="_blank" rel="noopener" href="http://localhost:8081/%EF%BC%8C%E4%BC%9A%E6%98%BE%E7%A4%BAhttp://httpbin.org:80/get%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%8C%E6%AD%A4%E6%97%B6gateway%E8%B7%AF%E7%94%B1%E5%88%B0%E4%BA%86%E9%85%8D%E7%BD%AE%E7%9A%84uri%E3%80%82%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E5%B0%86%E9%85%8D%E7%BD%AE%E7%9A%84%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE%E5%88%B0%E5%BD%93%E5%89%8D%E6%97%B6%E4%B9%8B%E5%90%8E%EF%BC%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BC%9A%E6%98%BE%E7%A4%BA404%EF%BC%8C%E6%AD%A4%E6%97%B6%E8%AF%81%E6%98%8E%E6%B2%A1%E6%9C%89%E8%B7%AF%E7%94%B1%E5%88%B0%E9%85%8D%E7%BD%AE%E7%9A%84uri">http://localhost:8081/，会显示http://httpbin.org:80/get返回的结果，此时gateway路由到了配置的uri。如果我们将配置的时间设置到当前时之后，浏览器会显示404，此时证明没有路由到配置的uri</a>.</p>
+<p>跟时间相关的predicates还有Before Route Predicate Factory、Between Route Predicate Factory</p>
+<h5 id="Header-Route-Predicate-Factory"><a href="#Header-Route-Predicate-Factory" class="headerlink" title="Header Route Predicate Factory"></a>Header Route Predicate Factory</h5><p>Header Route Predicate Factory需要2个参数，一个是header名，另外一个header值，该值可以是一个正则表达式。当此断言匹配了请求的header名和值时，断言通过，进入到router的规则中去。</p>
+<p>在工程的配置文件加上以下的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: header_route</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: header_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - Header=X-Request-Id, \d+</span><br><span class="line">  profiles: header_route</span><br></pre></td></tr></table></figure>
+
+<p>在上面的配置中，当请求的Header中有X-Request-Id的header名，且header值为数字时，请求会被路由到配置的 uri. 使用curl执行以下命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -H &#x27;X-Request-Id:1&#x27; localhost:8081</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/221.png" alt="221"></p>
+<p>执行命令后，会正确的返回请求结果，结果省略。如果在请求中没有带上X-Request-Id的header名，并且值不为数字时，请求就会报404，路由没有被正确转发。</p>
+<h5 id="Cookie-Route-Predicate-Factory"><a href="#Cookie-Route-Predicate-Factory" class="headerlink" title="Cookie Route Predicate Factory"></a>Cookie Route Predicate Factory</h5><p>Cookie Route Predicate Factory需要2个参数，一个时cookie名字，另一个时值，可以为正则表达式。它用于匹配请求中，带有该名称的cookie和cookie匹配正则表达式的请求。</p>
+<p>在配置文件添加以下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: cookie_route</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: cookie_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - Cookie=name, forezp</span><br><span class="line">  profiles: cookie_route</span><br></pre></td></tr></table></figure>
+
+<p>在上面的配置中，请求带有cookie名为 name, cookie值为forezp 的请求将都会转发到uri为 <a target="_blank" rel="noopener" href="http://httpbin.org/get%E7%9A%84%E5%9C%B0%E5%9D%80%E4%B8%8A%E3%80%82">http://httpbin.org:80/get的地址上。</a> 使用curl命令进行请求，在请求中带上 cookie，会返回正确的结果，否则，请求报404错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -H &#x27;Cookie:name=forezp&#x27; localhost:8081</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/222.png" alt="222"></p>
+<h5 id="Host-Route-Predicate-Factory"><a href="#Host-Route-Predicate-Factory" class="headerlink" title="Host Route Predicate Factory"></a>Host Route Predicate Factory</h5><p>Host Route Predicate Factory需要一个参数即hostname，它可以使用. * 等去匹配host。这个参数会匹配请求头中的host的值，一致，则请求正确转发。</p>
+<p>在工程的配置文件，加上以下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: host_route</span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: host_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - Host=**.fangzhipeng.com</span><br><span class="line">  profiles: host_route</span><br></pre></td></tr></table></figure>
+
+<p>在上面的配置中，请求头中含有Host为fangzhipeng.com的请求将会被路由转发转发到配置的uri。 启动工程，执行以下的curl命令，请求会返回正确的请求结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H &#x27;Host:www.fangzhipeng.com&#x27; localhost:8081</span><br></pre></td></tr></table></figure>
+
+<h5 id=""><a href="#" class="headerlink" title=""></a><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/223.png" alt="223"></h5><h5 id="Method-Route-Predicate-Factory"><a href="#Method-Route-Predicate-Factory" class="headerlink" title="Method Route Predicate Factory"></a>Method Route Predicate Factory</h5><p>Method Route Predicate Factory 需要一个参数，即请求的类型。比如GET类型的请求都转发到此路由。在工程的配置文件加上以下的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: method_route</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: method_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - Method=GET</span><br><span class="line">  profiles: method_route</span><br></pre></td></tr></table></figure>
+
+<p>在上面的配置中，所有的GET类型的请求都会路由转发到配置的uri。使用 curl命令模拟 get类型的请求，会得到正确的返回结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl localhost:8081</span><br></pre></td></tr></table></figure>
+
+<p>使用 curl命令模拟 post请求，则返回404结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X POST localhost:8081</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/224.png" alt="224"></p>
+<h5 id="Path-Route-Predicate-Factory"><a href="#Path-Route-Predicate-Factory" class="headerlink" title="Path Route Predicate Factory"></a>Path Route Predicate Factory</h5><p>Path Route Predicate Factory 需要一个参数: 一个spel表达式，应用匹配路径。</p>
+<p>在工程的配置文件application.yml文件中，做以下的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: path_route</span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: path_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - Path=/foo/&#123;segment&#125;</span><br><span class="line">  profiles: path_route</span><br></pre></td></tr></table></figure>
+
+<p>在上面的配置中，所有的请求路径满足/foo/{segment}的请求将会匹配并被路由，比如/foo/1 、/foo/bar的请求，将会命中匹配，并成功转发。</p>
+<p>使用curl模拟一个请求localhost:8081/foo/dew，执行之后会返回正确的请求结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl localhost:8081/foo/dew</span><br></pre></td></tr></table></figure>
+
+<h5 id="Query-Route-Predicate-Factory"><a href="#Query-Route-Predicate-Factory" class="headerlink" title="Query Route Predicate Factory"></a>Query Route Predicate Factory</h5><p>Query Route Predicate Factory 需要2个参数:一个参数名和一个参数值的正则表达式。在工程的配置文件application.yml做以下的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: query_route</span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: query_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - Query=foo, ba.</span><br><span class="line">  profiles: query_route</span><br></pre></td></tr></table></figure>
+
+<p>在上面的配置文件中，配置了请求中含有参数foo，并且foo的值匹配ba.，则请求命中路由，比如一个请求中含有参数名为foo，值的为bar，能够被正确路由转发。</p>
+<p>模拟请求的命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl localhost:8081?foo=bar</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/225.png" alt="225"></p>
+<p>Query Route Predicate Factory也可以只填一个参数，填一个参数时，则只匹配参数名，即请求的参数中含有配置的参数名，则命中路由。比如以下的配置中，配置了请求参数中含有参数名为foo 的参数将会被请求转发到uri为<a target="_blank" rel="noopener" href="http://httpbin.org/get%E3%80%82">http://httpbin.org:80/get。</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: query_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        predicates:</span><br><span class="line">        - Query=foo</span><br><span class="line">  profiles: query_route</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-gateway-之filters"><a href="#2-gateway-之filters" class="headerlink" title="2.gateway 之filters"></a>2.gateway 之filters</h4><p>Spring Cloud Gateway根据作用范围划分为GatewayFilter和GlobalFilter，二者区别如下：</p>
+<ul>
+<li>GatewayFilter : 需要通过spring.cloud.routes.filters 配置在具体路由下，只作用在当前路由上或通过spring.cloud.default-filters配置在全局，作用在所有路由上</li>
+<li>GlobalFilter : 全局过滤器，不需要在配置文件中配置，作用在所有的路由上，最终通过GatewayFilterAdapter包装成GatewayFilterChain可识别的过滤器，它为请求业务以及路由的URI转换为真实业务服务的请求地址的核心过滤器，不需要配置，系统初始化时加载，并作用在每个路由上。</li>
+</ul>
+<h5 id="gateway-filter"><a href="#gateway-filter" class="headerlink" title="gateway filter"></a>gateway filter</h5><h6 id="AddRequestHeader-GatewayFilter-Factory"><a href="#AddRequestHeader-GatewayFilter-Factory" class="headerlink" title="AddRequestHeader GatewayFilter Factory"></a>AddRequestHeader GatewayFilter Factory</h6><p>创建工程，引入相关的依赖,包括spring boot 版本2.0.5，spring Cloud版本Finchley，gateway依赖如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在工程的配置文件中，加入以下的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8081</span><br><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: add_request_header_route</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      - id: add_request_header_route</span><br><span class="line">        uri: http://httpbin.org:80/get</span><br><span class="line">        filters:</span><br><span class="line">        - AddRequestHeader=X-Request-Foo, Bar</span><br><span class="line">        predicates:</span><br><span class="line">        - After=2017-01-20T17:42:47.789-07:00[America/Denver]</span><br><span class="line">  profiles: add_request_header_route</span><br></pre></td></tr></table></figure>
+
+<p>在上述的配置中，工程的启动端口为8081，配置文件为add_request_header_route，在add_request_header_route配置中，配置了roter的id为add_request_header_route，路由地址为<a target="_blank" rel="noopener" href="http://httpbin.org/get%EF%BC%8C%E8%AF%A5router%E6%9C%89AfterPredictFactory%EF%BC%8C%E6%9C%89%E4%B8%80%E4%B8%AAfilter%E4%B8%BAAddRequestHeaderGatewayFilterFactory(%E7%BA%A6%E5%AE%9A%E5%86%99%E6%88%90AddRequestHeader)%EF%BC%8CAddRequestHeader%E8%BF%87%E6%BB%A4%E5%99%A8%E5%B7%A5%E5%8E%82%E4%BC%9A%E5%9C%A8%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%8A%A0%E4%B8%8A%E4%B8%80%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%A4%B4%EF%BC%8C%E5%90%8D%E7%A7%B0%E4%B8%BAX-Request-Foo%EF%BC%8C%E5%80%BC%E4%B8%BABar%E3%80%82%E4%B8%BA%E4%BA%86%E9%AA%8C%E8%AF%81AddRequestHeaderGatewayFilterFactory%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%8C%E6%9F%A5%E7%9C%8B%E5%AE%83%E7%9A%84%E6%BA%90%E7%A0%81%EF%BC%8CAddRequestHeaderGatewayFilterFactory%E7%9A%84%E6%BA%90%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A">http://httpbin.org:80/get，该router有AfterPredictFactory，有一个filter为AddRequestHeaderGatewayFilterFactory(约定写成AddRequestHeader)，AddRequestHeader过滤器工厂会在请求头加上一对请求头，名称为X-Request-Foo，值为Bar。为了验证AddRequestHeaderGatewayFilterFactory是怎么样工作的，查看它的源码，AddRequestHeaderGatewayFilterFactory的源码如下：</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class AddRequestHeaderGatewayFilterFactory extends AbstractNameValueGatewayFilterFactory &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public GatewayFilter apply(NameValueConfig config) &#123;</span><br><span class="line">		return (exchange, chain) -&gt; &#123;</span><br><span class="line">			ServerHttpRequest request = exchange.getRequest().mutate()</span><br><span class="line">					.header(config.getName(), config.getValue())</span><br><span class="line">					.build();</span><br><span class="line"></span><br><span class="line">			return chain.filter(exchange.mutate().request(request).build());</span><br><span class="line">		&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由上面的代码可知，根据旧的ServerHttpRequest创建新的 ServerHttpRequest ，在新的ServerHttpRequest加了一个请求头，然后创建新的 ServerWebExchange ，提交过滤器链继续过滤。</p>
+<p>启动工程，通过curl命令来模拟请求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:8081</span><br></pre></td></tr></table></figure>
+
+<p>最终显示了从 <a target="_blank" rel="noopener" href="http://httpbin.org/get%E5%BE%97%E5%88%B0%E4%BA%86%E8%AF%B7%E6%B1%82%EF%BC%8C%E5%93%8D%E5%BA%94%E5%A6%82%E4%B8%8B%EF%BC%9A">http://httpbin.org:80/get得到了请求，响应如下：</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;args&quot;: &#123;&#125;,</span><br><span class="line">  &quot;headers&quot;: &#123;</span><br><span class="line">    &quot;Accept&quot;: &quot;*/*&quot;,</span><br><span class="line">    &quot;Connection&quot;: &quot;close&quot;,</span><br><span class="line">    &quot;Forwarded&quot;: &quot;proto=http;host=\&quot;localhost:8081\&quot;;for=\&quot;0:0:0:0:0:0:0:1:56248\&quot;&quot;,</span><br><span class="line">    &quot;Host&quot;: &quot;httpbin.org&quot;,</span><br><span class="line">    &quot;User-Agent&quot;: &quot;curl/7.58.0&quot;,</span><br><span class="line">    &quot;X-Forwarded-Host&quot;: &quot;localhost:8081&quot;,</span><br><span class="line">    &quot;X-Request-Foo&quot;: &quot;Bar&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;origin&quot;: &quot;0:0:0:0:0:0:0:1, 210.22.21.66&quot;,</span><br><span class="line">  &quot;url&quot;: &quot;http://localhost:8081/get&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以上面的响应可知，确实在请求头中加入了X-Request-Foo这样的一个请求头，在配置文件中配置的AddRequestHeader过滤器工厂生效。</p>
+<h6 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h6><p>Spring Cloud Gateway内置了19种强大的过滤器工厂，能够满足很多场景的需求，那么能不能自定义自己的过滤器呢，当然是可以的。在spring Cloud Gateway中，过滤器需要实现GatewayFilter和Ordered2个接口。写一个RequestTimeFilter，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class RequestTimeFilter implements GatewayFilter, Ordered &#123;</span><br><span class="line"></span><br><span class="line">    private static final Log log = LogFactory.getLog(GatewayFilter.class);</span><br><span class="line">    private static final String REQUEST_TIME_BEGIN = &quot;requestTimeBegin&quot;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) &#123;</span><br><span class="line"></span><br><span class="line">        exchange.getAttributes().put(REQUEST_TIME_BEGIN, System.currentTimeMillis());</span><br><span class="line">        return chain.filter(exchange).then(</span><br><span class="line">                Mono.fromRunnable(() -&gt; &#123;</span><br><span class="line">                    Long startTime = exchange.getAttribute(REQUEST_TIME_BEGIN);</span><br><span class="line">                    if (startTime != null) &#123;</span><br><span class="line">                        log.info(exchange.getRequest().getURI().getRawPath() + &quot;: &quot; + (System.currentTimeMillis() - startTime) + &quot;ms&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getOrder() &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，Ordered中的int getOrder()方法是来给过滤器设定优先级别的，值越大则优先级越低。还有有一个filterI(exchange,chain)方法，在该方法中，先记录了请求的开始时间，并保存在ServerWebExchange中，此处是一个“pre”类型的过滤器，然后再chain.filter的内部类中的run()方法中相当于”post”过滤器，在此处打印了请求所消耗的时间。然后将该过滤器注册到router中，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) &#123;</span><br><span class="line">    // @formatter:off</span><br><span class="line">    return builder.routes()</span><br><span class="line">            .route(r -&gt; r.path(&quot;/customer/**&quot;)</span><br><span class="line">                    .filters(f -&gt; f.filter(new RequestTimeFilter())</span><br><span class="line">                            .addResponseHeader(&quot;X-Response-Default-Foo&quot;, &quot;Default-Bar&quot;))</span><br><span class="line">                    .uri(&quot;http://httpbin.org:80/get&quot;)</span><br><span class="line">                    .order(0)</span><br><span class="line">                    .id(&quot;customer_filter_router&quot;)</span><br><span class="line">            )</span><br><span class="line">            .build();</span><br><span class="line">    // @formatter:on</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重启程序，通过curl命令模拟请求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:8081/customer/123</span><br></pre></td></tr></table></figure>
+
+<p>在程序的控制台输出一下的请求信息的日志：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-11-16 15:02:20.177  INFO 20488 --- [ctor-http-nio-3] o.s.cloud.gateway.filter.GatewayFilter   : /customer/123: 152ms</span><br></pre></td></tr></table></figure>
+
+<h5 id="global-filter"><a href="#global-filter" class="headerlink" title="global filter"></a>global filter</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Mono&lt;Void&gt; <span class="title">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span> </span>&#123;</span><br><span class="line">    String token = exchange.getRequest().getQueryParams().getFirst(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (token == <span class="keyword">null</span> || token.isEmpty()) &#123;</span><br><span class="line">        logger.info(<span class="string">&quot;token is empty...&quot;</span>);</span><br><span class="line">        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);</span><br><span class="line">        <span class="keyword">return</span> exchange.getResponse().setComplete();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> chain.filter(exchange);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/211.png" alt="212"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/212.png" alt="212"></p>
+<h2 id="三、Ribbon负载均衡"><a href="#三、Ribbon负载均衡" class="headerlink" title="三、Ribbon负载均衡"></a>三、Ribbon负载均衡</h2><p>ribbon-provider 和ribbon-consumer</p>
+<p>使用负载均衡 轮询法</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/28.png" alt="28"></p>
+<p>ribbon-custom和nacos-ribbon-provider同时启动</p>
+<p>自定myrule负载均衡规则:只调用第一个服务器8070</p>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:7089/test/getUserName">localhost:7089/test/getUserName</a></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/31.png" alt="31"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/32.png" alt="32"></p>
+<h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><p>著作权归<a target="_blank" rel="noopener" href="https://pdai.tech所有./">https://pdai.tech所有。</a> 链接：<a target="_blank" rel="noopener" href="https://pdai.tech/md/algorithm/alg-domain-load-balance.html">https://pdai.tech/md/algorithm/alg-domain-load-balance.html</a></p>
+<p>常见的负载均衡算法包含:</p>
+<ul>
+<li>轮询法(Round Robin)</li>
+<li>加权轮询法(Weight Round Robin)</li>
+<li>平滑加权轮询法(Smooth Weight Round Robin)</li>
+<li>随机法(Random)</li>
+<li>加权随机法(Weight Random)</li>
+<li>源地址哈希法(Hash)</li>
+<li>最小连接数法(Least Connections)</li>
+</ul>
+<h3 id="¶-轮询法-Round-Robin"><a href="#¶-轮询法-Round-Robin" class="headerlink" title="¶ 轮询法(Round Robin)"></a><a href="#%E8%BD%AE%E8%AF%A2%E6%B3%95round-robin">¶</a> 轮询法(Round Robin)</h3><p>将请求按顺序轮流地分配到后端服务器上，它均衡地对待后端的每一台服务器，而不关心服务器实际的连接数和当前的系统负载。</p>
+<h3 id="¶-加权轮询法-Weight-Round-Robin"><a href="#¶-加权轮询法-Weight-Round-Robin" class="headerlink" title="¶ 加权轮询法(Weight Round Robin)"></a><a href="#%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2%E6%B3%95weight-round-robin">¶</a> 加权轮询法(Weight Round Robin)</h3><p>不同的后端服务器可能机器的配置和当前系统的负载并不相同，因此它们的抗压能力也不相同。给配置高、负载低的机器配置更高的权重，让其处理更多的请；而配置低、负载高的机器，给其分配较低的权重，降低其系统负载，加权轮询能很好地处理这一问题，并将请求顺序且按照权重分配到后端。</p>
+<h3 id="¶-随机法-Random"><a href="#¶-随机法-Random" class="headerlink" title="¶ 随机法(Random)"></a><a href="#%E9%9A%8F%E6%9C%BA%E6%B3%95random">¶</a> 随机法(Random)</h3><p>通过系统的随机算法，根据后端服务器的列表大小值来随机选取其中的一台服务器进行访问。由概率统计理论可以得知，随着客户端调用服务端的次数增多，其实际效果越来越接近于平均分配调用量到后端的每一台服务器，也就是轮询的结果。</p>
+<h3 id="¶-加权随机法-Weight-Random"><a href="#¶-加权随机法-Weight-Random" class="headerlink" title="¶ 加权随机法(Weight Random)"></a><a href="#%E5%8A%A0%E6%9D%83%E9%9A%8F%E6%9C%BA%E6%B3%95weight-random">¶</a> 加权随机法(Weight Random)</h3><p>与加权轮询法一样，加权随机法也根据后端机器的配置，系统的负载分配不同的权重。不同的是，它是按照权重随机请求后端服务器，而非顺序。</p>
+<h3 id="¶-源地址哈希法-Hash"><a href="#¶-源地址哈希法-Hash" class="headerlink" title="¶ 源地址哈希法(Hash)"></a><a href="#%E6%BA%90%E5%9C%B0%E5%9D%80%E5%93%88%E5%B8%8C%E6%B3%95hash">¶</a> 源地址哈希法(Hash)</h3><p>源地址哈希的思想是根据获取客户端的IP地址，通过哈希函数计算得到的一个数值，用该数值对服务器列表的大小进行取模运算，得到的结果便是客服端要访问服务器的序号。采用源地址哈希法进行负载均衡，同一IP地址的客户端，当后端服务器列表不变时，它每次都会映射到同一台后端服务器进行访问。</p>
+<h3 id="¶-最小连接数法-Least-Connections"><a href="#¶-最小连接数法-Least-Connections" class="headerlink" title="¶ 最小连接数法(Least Connections)"></a><a href="#%E6%9C%80%E5%B0%8F%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%B3%95least-connections">¶</a> 最小连接数法(Least Connections)</h3><p>最小连接数算法比较灵活和智能，由于后端服务器的配置不尽相同，对于请求的处理有快有慢，它是根据后端服务器当前的连接情况，动态地选取其中当前积压连接数最少的一台服务器来处理当前的请求，尽可能地提高后端服务的利用效率，将负责合理地分流到每一台服务器。</p>
+<p>负载均衡规则说明</p>
+<p>NFLoadBalancerclassName:配置ILoadBalancer的实现类<br>NFLoadBalancerRuleclassName:配置IRule的实现类<br>NFLoadBalancerPingclassName:配置IPing的实现类<br>NFWSServerListclassName:配置ServerList的实现类<br>NIWSServerListFilterclassName:配置ServerListFilter的实现类</p>
+<table>
+<thead>
+<tr>
+<th align="left">策略名</th>
+<th>策略声明</th>
+<th>策略描述</th>
+<th>实现说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">BestAvailableRule</td>
+<td>public class BestAvailableRule extends ClientConfigEnabledRoundRobinRule</td>
+<td>选择一个最小的并发请求的server</td>
+<td>逐个考察Server，如果Server被tripped了，则忽略，在选择其中ActiveRequestsCount最小的server</td>
+</tr>
+<tr>
+<td align="left">AvailabilityFilteringRule</td>
+<td>public class AvailabilityFilteringRule extends PredicateBasedRule</td>
+<td>过滤掉那些因为一直连接失败的被标记为circuit tripped的后端server，并过滤掉那些高并发的的后端server（active connections 超过配置的阈值）</td>
+<td>使用一个AvailabilityPredicate来包含过滤server的逻辑，其实就就是检查status里记录的各个server的运行状态</td>
+</tr>
+<tr>
+<td align="left">WeightedResponseTimeRule</td>
+<td>public class WeightedResponseTimeRule extends RoundRobinRule</td>
+<td>根据相应时间分配一个weight，相应时间越长，weight越小，被选中的可能性越低</td>
+<td>一个后台线程定期的从status里面读取评价响应时间，为每个server计算一个weight。Weight的计算也比较简单responsetime 减去每个server自己平均的responsetime是server的权重。当刚开始运行，没有形成statas时，使用roubine策略选择server。</td>
+</tr>
+<tr>
+<td align="left">RetryRule</td>
+<td>public class RetryRule extends AbstractLoadBalancerRule</td>
+<td>对选定的负载均衡策略机上重试机制。</td>
+<td>在一个配置时间段内当选择server不成功，则一直尝试使用subRule的方式选择一个可用的server</td>
+</tr>
+<tr>
+<td align="left">RoundRobinRule</td>
+<td>public class RoundRobinRule extends AbstractLoadBalancerRule</td>
+<td>roundRobin方式轮询选择server</td>
+<td>轮询index，选择index对应位置的server</td>
+</tr>
+<tr>
+<td align="left">RandomRule</td>
+<td>public class RandomRule extends AbstractLoadBalancerRule</td>
+<td>随机选择一个server</td>
+<td>在index上随机，选择index对应位置的server</td>
+</tr>
+<tr>
+<td align="left">ZoneAvoidanceRule</td>
+<td>public class ZoneAvoidanceRule extends PredicateBasedRule</td>
+<td>复合判断server所在区域的性能和server的可用性选择server</td>
+<td>使用ZoneAvoidancePredicate和AvailabilityPredicate来判断是否选择某个server，前一个判断判定一个zone的运行性能是否可用，剔除不可用的zone（的所有server），AvailabilityPredicate用于过滤掉连接数过多的Server。</td>
+</tr>
+</tbody></table>
+<h2 id="四、OpenFeign声明式调用"><a href="#四、OpenFeign声明式调用" class="headerlink" title="四、OpenFeign声明式调用"></a>四、OpenFeign声明式调用</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>Feign是一个声明式web服务客户端，只需要创建一个接口并添加注解，即可实现远程调用服务。</p>
+<pre><code>    Feign 就是一个 Http 客户端的模板，目标是减少 HTTP API 的复杂性，希望能将 HTTP 远程服务调用做到像 RPC 一样易用。Feign 集成 RestTemplate、Ribbon 实现了客户端的负载均衡的 Http 调用，并对原调用方式进行了封装，使得开发者不必手动使用 RestTemplate 调用服务，而是声明一个接口，并在这个接口中标注一个注解即可完成服务调用，这样更加符合面向接口编程的宗旨，客户端在调用服务端时也不需要再关注请求的方式、地址以及是 forObject 还是 forEntity，结构更加明了，耦合也更低，简化了开发。但 Feign 已经停止迭代了，所以本篇文章我们也不过多的介绍，而在 Feign 的基础上，又衍生出了 openFeign，那么 openFeign 又是什么呢？
+
+    openFeign 在 Feign 的基础上支持了 SpringMVC 的注解，如 @RequestMapping 等。OpenFeign 的 @FeignClient 可以解析 SpringMVC 的 @RequestMapping 注解下的接口，并通过动态代理的方式产生实现类，实现类中做负载均衡并调用其他服务。
+
+    总的就是，openFeign 作为微服务架构下服务间调用的解决方案，是一种声明式、模板化的 HTTP 的模板，使 HTTP 请求就像调用本地方法一样，通过 openFeign 可以替代基于 RestTemplate 的远程服务调用，并且默认集成了 Ribbon 进行负载均衡。
+</code></pre>
+<h3 id="2、作用"><a href="#2、作用" class="headerlink" title="2、作用"></a>2、作用</h3><p> ①服务消费者在远程调用时，只需通过编写一个接口，并表上注解进行配置，即可实现对服务提供方接口的绑定。</p>
+<p>②Feign集成Ribbon，Feign利用Ribbon维护服务提供方列表，实现轮询调用服务提供者。</p>
+<p>架构图</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/41.png" alt="41"></p>
+<h3 id="3-openFeign-的传参："><a href="#3-openFeign-的传参：" class="headerlink" title="3.openFeign 的传参："></a>3.openFeign 的传参：</h3><p>​        开发中接口传参的方式有很多，但是在 openFeign 中的传参是有一定规则的，下面详细介绍四种常见的传参方式。</p>
+<p>3.1、传递JSON数据：<br>provider 接口中 JSON 传参方法如下：</p>
+<p>@RestController<br>@RequestMapping(“/openfeign/provider”)<br>public class OpenFeignProviderController {<br>    @PostMapping(“/order2”)<br>    public Order createOrder2(@RequestBody Order order){<br>        return order;<br>    }<br>}<br>consumer消费者openFeign代码如下：</p>
+<p>@FeignClient(value = “openFeign-provider”)<br>public interface OpenFeignService {<br>    /**<br>     * 参数默认是@RequestBody标注的，这里的@RequestBody可以不填<br>     * 方法名称任意<br>     */<br>    @PostMapping(“/openfeign/provider/order2”)<br>    Order createOrder2(@RequestBody Order order);<br>}<br>注意：openFeign 默认的传参方式就是JSON传参（@RequestBody），因此定义接口的时候可以不用@RequestBody注解标注，不过为了规范，一般都填上。</p>
+<p>3.2、POJO表单传参：<br>provider服务提供者代码如下：</p>
+<p>@RestController<br>@RequestMapping(“/openfeign/provider”)<br>public class OpenFeignProviderController {<br>    @PostMapping(“/order1”)<br>    public Order createOrder1(Order order){<br>        return order;<br>    }<br>}<br>consumer消费者openFeign代码如下：</p>
+<p>@FeignClient(value = “openFeign-provider”)<br>public interface OpenFeignService {<br>    /**<br>     * 如果通过POJO表单传参的，使用@SpringQueryMap标注<br>     */<br>    @PostMapping(“/openfeign/provider/order1”)<br>    Order createOrder1(@SpringQueryMap Order order);<br>}<br>3.3、URL中携带参数：<br>此种方式针对restful方式中的GET请求，也是比较常用请求方式。</p>
+<p>provider服务提供者代码如下：</p>
+<p>@RestController<br>@RequestMapping(“/openfeign/provider”)<br>public class OpenFeignProviderController {</p>
+<pre><code>@GetMapping(&quot;/test/&#123;id&#125;&quot;)
+public String test(@PathVariable(&quot;id&quot;)Integer id)&#123;
+    return &quot;accept one msg id=&quot;+id;
+</code></pre>
+<p>}<br>consumer消费者openFeign接口如下：</p>
+<p>@FeignClient(value = “openFeign-provider”)<br>public interface OpenFeignService {</p>
+<pre><code>@GetMapping(&quot;/openfeign/provider/test/&#123;id&#125;&quot;)
+String get(@PathVariable(&quot;id&quot;)Integer id);
+</code></pre>
+<p>}<br>使用注解 @PathVariable 接收url中的占位符，这种方式很好理解。</p>
+<p>3.4、普通表单参数：<br>此种方式传参不建议使用，但是也有很多开发在用。</p>
+<p>provider服务提供者代码如下：</p>
+<p>@RestController<br>@RequestMapping(“/openfeign/provider”)<br>public class OpenFeignProviderController {<br>    @PostMapping(“/test2”)<br>    public String test2(String id,String name){<br>        return MessageFormat.format(“accept on msg id={0}，name={1}”,id,name);<br>    }<br>}<br>consumer消费者openFeign接口传参如下：</p>
+<p>@FeignClient(value = “openFeign-provider”)<br>public interface OpenFeignService {<br>    /**<br>     * 必须要@RequestParam注解标注，且value属性必须填上参数名<br>          * 方法参数名可以任意，但是@RequestParam注解中的value属性必须和provider中的参数名相同<br>          */<br>        @PostMapping(“/openfeign/provider/test2”)<br>        String test(@RequestParam(“id”) String arg1,@RequestParam(“name”) String arg2);<br>}</p>
+<h3 id="4、案例说明"><a href="#4、案例说明" class="headerlink" title="4、案例说明"></a>4、案例说明</h3><p>spring-boot-openfeign-01</p>
+<p>feign创建接口，调用http的基本方法(post、get)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@FeignClient(&quot;openfeign&quot;)</span><br><span class="line">interface NameFeignApi &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/test/name&quot;)</span><br><span class="line">    String getName();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/42.png" alt="42"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/43.png" alt="43"></p>
+<p>Spring Cloud OpenFeign 的核心工作原理经上文探究可以非常简单的总结为：</p>
+<ol>
+<li><ol>
+<li>通过 @EnableFeignCleints 触发 Spring 应用程序对 classpath 中 @FeignClient 修饰类的扫描</li>
+<li>解析到 @FeignClient 修饰类后， Feign 框架通过扩展 Spring Bean Deifinition 的注册逻辑， 最终注册一个 FeignClientFacotoryBean 进入 Spring 容器</li>
+<li>Spring 容器在初始化其他用到 @FeignClient 接口的类时， 获得的是 FeignClientFacotryBean 产生的一个代理对象 Proxy.</li>
+<li>基于 java 原生的动态代理机制， 针对 Proxy 的调用， 都会被统一转发给 Feign 框架所定义的一个 InvocationHandler ， 由该 Handler 完成后续的 HTTP 转换， 发送， 接收， 翻译HTTP响应的工作</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923200504398.png" alt="image-20220923200504398"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/44.png" alt="44"></p>
+<h2 id="五、熔断、限流、降级"><a href="#五、熔断、限流、降级" class="headerlink" title="五、熔断、限流、降级"></a>五、熔断、限流、降级</h2><h3 id="spring-cloud-Hystrix"><a href="#spring-cloud-Hystrix" class="headerlink" title="spring cloud Hystrix"></a>spring cloud Hystrix</h3><p>（1）服务降级<br>服务出现故障时，给故障服务降级到事先准备好的故障处理结果，将此结果返回给服务消费者，如：</p>
+<p> <img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/57.png" alt="57"></p>
+<p>客户端访问服务1，服务1调用服务2，服务2出现故障，Hystrix服务降级，返回一个可以处理的结果给服务1，服务1再以友好的错误界面返回给客户端。</p>
+<p>（2）服务熔断<br>熔断机制是应对服务雪崩的一种链路保护机制，当服务出现故障时，服务会进行降级，熔断该服务节点，迅速返回错误响应信息。当检测到服务访问正常时，恢复其链路节点。<br><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/58.png" alt="58"></p>
+<h4 id="Hystrix-demo"><a href="#Hystrix-demo" class="headerlink" title="Hystrix-demo"></a>Hystrix-demo</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/testCollapser&quot;)</span><br><span class="line">public String testCollapser() throws Exception&#123;</span><br><span class="line">    new Thread()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            User user = userService.getUserById(1L);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line"></span><br><span class="line">    new Thread()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            User user = userService.getUserById(2L);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line"></span><br><span class="line">    new Thread()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            User user = userService.getUserById(3L);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">    return &quot;操作成功&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/51.png" alt="51"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/hello&quot;)</span><br><span class="line">@HystrixCommand(fallbackMethod = &quot;fallbackHello&quot;, commandProperties = &#123;</span><br><span class="line">        @HystrixProperty(name = &quot;execution.isolation.thread.timeoutInMilliseconds&quot;, value = &quot;1000&quot;)</span><br><span class="line">&#125;)</span><br><span class="line">public String hello() throws InterruptedException &#123;</span><br><span class="line">    //模拟访问超时</span><br><span class="line">    Thread.sleep(3000);</span><br><span class="line">    return &quot;Hello Hystrix&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/52.png" alt="52"></p>
+<h4 id="Hystrix监测"><a href="#Hystrix监测" class="headerlink" title="Hystrix监测"></a>Hystrix监测</h4><p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/56.png" alt="56"></p>
+<p>Hystrix-dashboard</p>
+<p>访问8070/hello</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/hello&quot;)</span><br><span class="line">@HystrixCommand(fallbackMethod = &quot;planb&quot;, commandProperties = &#123;</span><br><span class="line">        @HystrixProperty(name = &quot;execution.isolation.thread.timeoutInMilliseconds&quot;, value = &quot;1000&quot;)</span><br><span class="line">&#125;)</span><br><span class="line">public String hello() throws InterruptedException &#123;</span><br><span class="line">    Thread.sleep(2000);</span><br><span class="line">    return &quot;Hello World&quot;;</span><br><span class="line">&#125;</span><br><span class="line">private String planb() &#123;</span><br><span class="line">    return &quot;Sorry our Systems are busy! try again later.&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/55.png" alt="55"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/54.png" alt="54"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/53.png" alt="53"></p>
+<h4 id="Turbine集群监测"><a href="#Turbine集群监测" class="headerlink" title="Turbine集群监测"></a>Turbine集群监测</h4><p>启动turbine-dashboard(9090)、turbine-eureka-service(8001)、turbine-user-service(8070)</p>
+<p>userservice</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/593.png" alt="593"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/591.png" alt="591"></p>
+<p>turbine-dashboard</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/59.png" alt="59"></p>
+<p>关闭localhost:9090/turbine.stream和localhost:8070/actutor/hystrix.stream   turbine-dashboard能够检测curl的stream流连接</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/595.png" alt="595"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/596.png" alt="596"></p>
+<p>turbine-eureka-server</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/594.png" alt="594"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/592.png" alt="592"></p>
+<h2 id="六、Sring-cloud-bus消息总线"><a href="#六、Sring-cloud-bus消息总线" class="headerlink" title="六、Sring cloud bus消息总线"></a>六、Sring cloud bus消息总线</h2><h3 id="kafka"><a href="#kafka" class="headerlink" title="kafka"></a>kafka</h3><p>docker安装部署kafka</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line"></span><br><span class="line">docker pull wurstmeister/kafka</span><br><span class="line"></span><br><span class="line">docker run -d --name zookeeper -p 2181:2181 wurstmeister/zookeeper</span><br><span class="line"> </span><br><span class="line">docker run -d --name kafka --publish 9092:9092 --link zookeeper --env KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 --env KAFKA_ADVERTISED_HOST_NAME=localhost --env KAFKA_ADVERTISED_PORT=9092 wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<p>kafka-map可视化界面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull dushixiang/kafka-map</span><br><span class="line">docker run -d --name kafka-map -p 8049:8080 -e DEFAULT_USERNAME=admin -e DEFAULT_PASSWORD=admin  dushixiang/kafka-map:latest</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/61.png" alt="61"></p>
+<p>zookeeper可视化界面</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/62.png" alt="62"></p>
+<p>运行 stream-input、Stream-output</p>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:18091/test/send4">localhost:18091/test/send4</a></p>
+<p>可见对应的ay-topic的messages数量增加</p>
+<p>说明消息发送成功</p>
+<p>output生产者发送消息</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/64.png" alt="64"></p>
+<p>input消费者接收信息如下<img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/63.png" alt="63"></p>
+<h2 id="七、分布式事务Seata"><a href="#七、分布式事务Seata" class="headerlink" title="七、分布式事务Seata"></a>七、分布式事务Seata</h2><p>Spring cloud Alibaba Seata</p>
+<p>下载seata并运行seata-server，启动nacos</p>
+<p>同时运行seata-orderservice、seata-stockservice,seata-userservice，最后在网站中测试<a target="_blank" rel="noopener" href="http://localhost:9001/order/create?userId=1&productOd=1&count=10&money=100">localhost:9001/order/create?userId=1&amp;productOd=1&amp;count=10&amp;money=100</a></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-server.png" alt="seata-server"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-userservice.png" alt="seata-userservice"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-stockservice.png" alt="seata-stockservice"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/seata-orderservice.png" alt="seata-orderservice"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/71.png" alt="71"></p>
+<h2 id="八、服务链路追踪Sleuth"><a href="#八、服务链路追踪Sleuth" class="headerlink" title="八、服务链路追踪Sleuth"></a>八、服务链路追踪Sleuth</h2><p>spring cloud Sleuth</p>
+<p>运行sleuth-zipkin中的gateway、provider、consumer</p>
+<p>同时配置运行zipkin、nacos、sentinel环境</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/81.png" alt="81"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/82.png" alt="82"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/83.png" alt="83"></p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/84.png" alt="84"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/springcloude/" rel="tag"># springcloude</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="数据库知识点">
+                  <i class="fa fa-chevron-left"></i> 数据库知识点
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/12/spring5%E5%9F%BA%E7%A1%80/" rel="next" title="Spring5基础">
+                  Spring5基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LAYCHOU</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">173k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:37</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  <!-- ҳ����С���� -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

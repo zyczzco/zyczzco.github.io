@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="一、安装vue-cli脚手架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2与vue3共存">
+<meta property="og:url" content="http://example.com/2021/08/12/vue2%E4%B8%8Evue3%E5%85%B1%E5%AD%98/index.html">
+<meta property="og:site_name" content="LAYCHOUblog">
+<meta property="og:description" content="一、安装vue-cli脚手架">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195904499.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195925877.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195932749.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195940378.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195949303.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195959560.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923200007430.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923200014959.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/vue3create.png">
+<meta property="og:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/comparevue.png">
+<meta property="article:published_time" content="2021-08-12T01:22:04.000Z">
+<meta property="article:modified_time" content="2022-09-23T12:02:28.427Z">
+<meta property="article:author" content="LAYCHOU">
+<meta property="article:tag" content="VUE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195904499.png">
+
+
+<link rel="canonical" href="http://example.com/2021/08/12/vue2%E4%B8%8Evue3%E5%85%B1%E5%AD%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/08/12/vue2%E4%B8%8Evue3%E5%85%B1%E5%AD%98/","path":"2021/08/12/vue2与vue3共存/","title":"vue2与vue3共存"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue2与vue3共存 | LAYCHOUblog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="LAYCHOUblog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">LAYCHOUblog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85vue-cli%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">一、安装vue-cli脚手架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E5%90%8D%E7%A7%B0"><span class="nav-number">2.</span> <span class="nav-text">二、修改名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%9C%80%E5%90%8E%E4%B8%80%E6%AD%A5%EF%BC%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E8%B0%83%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">三、最后一步，配置环境变量，实现全局调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%87%8D%E5%90%AF%E7%94%B5%E8%84%91%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">四、重启电脑就可以了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90%E4%B9%8B%E5%90%8E%E6%88%91%E4%BB%AC%E6%9D%A5%E5%88%9B%E5%BB%BAvue2%E5%92%8Cvue3%E9%A1%B9%E7%9B%AE"><span class="nav-number">5.</span> <span class="nav-text">五、配置完成之后我们来创建vue2和vue3项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E6%AF%94vue2%E5%92%8Cvue3%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">六、对比vue2和vue3项目结构</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LAYCHOU"
+      src="/images/mypic.jpg">
+  <p class="site-author-name" itemprop="name">LAYCHOU</p>
+  <div class="site-description" itemprop="description">zyc study blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zyczzco" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zyczzco" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1007611579@qq.com" title="E-Mail → 1007611579@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/12/vue2%E4%B8%8Evue3%E5%85%B1%E5%AD%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.jpg">
+      <meta itemprop="name" content="LAYCHOU">
+      <meta itemprop="description" content="zyc study blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LAYCHOUblog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue2与vue3共存
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-12 09:22:04" itemprop="dateCreated datePublished" datetime="2021-08-12T09:22:04+08:00">2021-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-23 20:02:28" itemprop="dateModified" datetime="2022-09-23T20:02:28+08:00">2022-09-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/VUE/" itemprop="url" rel="index"><span itemprop="name">VUE</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一、安装vue-cli脚手架"><a href="#一、安装vue-cli脚手架" class="headerlink" title="一、安装vue-cli脚手架"></a>一、安装vue-cli脚手架</h2>  <span id="more"></span>
+
+<p>（1）首先建立一个存放vue版本的文件夹，分别对应vue2和vue3</p>
+<p> （2）然后进入vue3文件夹，直接在他的地址栏进行cmd回车，并执行安装命令<br> 使用vue3必须确保@vue-cli版本在4.5.0以上，因此我们默认安装最新版本即可</p>
+<p> 在要安装的文件夹中下面命令不要加 -g，不然就是全局安装了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @vue/cli</span><br></pre></td></tr></table></figure>
+
+
+<p>此时默认安装的就是最新版本的脚手架。</p>
+<p>我安装完成之后是5.0.6版本</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195904499.png" alt="image-20220923195904499"></p>
+<p> （3）安装vue2脚手架<br>同理，这里我们指定版本安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-cli@2.9.6</span><br></pre></td></tr></table></figure>
+
+<p> （4）分别查看是否安装成功<br>分别进入  \vue_version\vue2\node_modules.bin 路径下找到vue的命令脚本文件</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195925877.png" alt="image-20220923195925877"></p>
+<p> 直接拖入cmd窗口，再加上–version，查看版本号</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195932749.png" alt="image-20220923195932749"></p>
+<p> 此时可看到vue2对应的脚手架安装成功。</p>
+<p>查看版本3同理，</p>
+<p> 均安装成功。</p>
+<h2 id="二、修改名称"><a href="#二、修改名称" class="headerlink" title="二、修改名称"></a>二、修改名称</h2><p>（1）找到.bin文件夹下的vue 和vue.cmd 文件，分别改名为vue2和vue2.cmd，下面是改好的样子</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195940378.png" alt="image-20220923195940378"></p>
+<p> （2）找到.bin文件夹下的vue 和vue.cmd 文件，分别改名为vue3和vue3.cmd，下面是改好的样子<br>vue3也是同上。</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195949303.png" alt="image-20220923195949303"></p>
+<h2 id="三、最后一步，配置环境变量，实现全局调用"><a href="#三、最后一步，配置环境变量，实现全局调用" class="headerlink" title="三、最后一步，配置环境变量，实现全局调用"></a>三、最后一步，配置环境变量，实现全局调用</h2><p>（1）右键我的电脑 — 属性 — 高级系统配置 — 环境变量</p>
+<p> （2）新建环境变量，目的是把我们的vue2和vue3的命令添加进去。</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923195959560.png" alt="image-20220923195959560"></p>
+<p> （3）同理，vue2也是如此</p>
+<p>点击确定，查看，可以看到添加成功。</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923200007430.png" alt="image-20220923200007430"></p>
+<p> （4）修改path变量<br>双击path出现左边弹框。 </p>
+<p> 点击新建，输入以%包裹的变量名，中间的变量名就是你新建的环境变量。头尾分别加上%，别搞错哈。</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/image-20220923200014959.png" alt="image-20220923200014959"></p>
+<p> 注意：win10电脑追加path是上面所述，不是win10的话，直接在path后面用分号隔开追加<br> 例如：;%VUE_CLI2%;%VUE_CLI3%</p>
+<h2 id="四、重启电脑就可以了。"><a href="#四、重启电脑就可以了。" class="headerlink" title="四、重启电脑就可以了。"></a>四、重启电脑就可以了。</h2><p>配置环境变量的目的就是为了让Path找到vue所在的文件路径而已，而我们前面修改的文件名vue2、vue3，就决定了我们全局使用的时候的名称。可自行定义。</p>
+<h2 id="五、配置完成之后我们来创建vue2和vue3项目"><a href="#五、配置完成之后我们来创建vue2和vue3项目" class="headerlink" title="五、配置完成之后我们来创建vue2和vue3项目"></a>五、配置完成之后我们来创建vue2和vue3项目</h2><p>此时我们就可以用全局变量查看vue2和vue3的版本号 ，直接vue2 -V 或 vue2 –version 就可以查看</p>
+<p>（1）我们再新建一个文件夹叫vue3项目搭建</p>
+<p> 在此处进行cmd，利用vue3创建项目的新命令vue3 create testvue3（自定义文件名）</p>
+<p>回车后出现下图，我们选择vue3，然后回车。</p>
+<p> 此时我们的vue3项目就创建好了</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/vue3create.png" alt="vue3create"></p>
+<p> （2）同理，vue2创建的时候就不能用create命令，他会提示这是vue3的命令，并且你的cli版本是2.9.6，也不符合vue3要求。</p>
+<p> 因此我们就需要用，vue2的原始命令创建 vue2 init webpack testvue</p>
+<p> 按照常规，需要选一堆设置</p>
+<p>vue2项目也安装成功</p>
+<h2 id="六、对比vue2和vue3项目结构"><a href="#六、对比vue2和vue3项目结构" class="headerlink" title="六、对比vue2和vue3项目结构"></a>六、对比vue2和vue3项目结构</h2><p>打开testvue2和testvue3项目，可见vue3项目结构确实精简了许多，看着比较舒服</p>
+<p><img src="https://zyc-oss.oss-cn-hangzhou.aliyuncs.com/markdown/comparevue.png" alt="comparevue"><br>参考原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41579104/article/details/121553469">https://blog.csdn.net/qq_41579104/article/details/121553469</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/VUE/" rel="tag"># VUE</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/12/spring5%E5%9F%BA%E7%A1%80/" rel="prev" title="Spring5基础">
+                  <i class="fa fa-chevron-left"></i> Spring5基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/20/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" rel="next" title="vue入门学习">
+                  vue入门学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LAYCHOU</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">173k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:37</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  <!-- ҳ����С���� -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
